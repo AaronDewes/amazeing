@@ -38,6 +38,7 @@ export function CodeEditorWithPanel({
           layout
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={styles.editorContainer}
+          style={{ height: "100%" }}
         >
           <Panel paddingless>
             <CodeEditor
@@ -65,6 +66,7 @@ export function CodeEditorWithPanel({
               animate={isMobile ? undefined : { x: 0, opacity: 1 }}
               exit={isMobile ? undefined : { x: 300, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              style={{ height: "100%" }}
             >
               <Panel paddingless>{panel.content}</Panel>
             </motion.div>
