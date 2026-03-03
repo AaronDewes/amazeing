@@ -102,6 +102,13 @@ export function InterpreterProvider({
     markDataRef.current = newMarks;
     setMarkData(newMarks);
   }, []);
+  
+  // Update marks when level changes to reset them
+  useEffect(() => {
+    const newMarks = emptyMarks(level.data.maze.width, level.data.maze.height);
+    markDataRef.current = newMarks;
+    setMarkData(newMarks);
+  }, [level]);
 
   // Refs
   const interpreterRef = useRef<Interpreter | null>(null);
