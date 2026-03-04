@@ -25,11 +25,13 @@ export function About() {
         >
           (Clickism <FaExternalLinkAlt size={12} />)
         </a>
+        <h6>{t("about.modifiedBy")}</h6>
+        Aaron Dewes
         <h6>{t("about.helpOf")}</h6>
         {t("about.tutors")}
         <h6>{t("about.sourceCode")} </h6>
         <a
-          href="https://github.com/Clickism/amazeing"
+          href="https://github.com/AaronDewes/amazeing"
           target="_blank"
           rel="noopener noreferrer"
         >

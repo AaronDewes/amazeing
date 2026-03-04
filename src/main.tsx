@@ -11,6 +11,7 @@ import { CodeEditorSettingsProvider } from "./features/editor/context/settings/C
 import { ColorSchemeProvider } from "./shared/theme/ColorSchemeProvider.tsx";
 import { EditorThemeProvider } from "./shared/theme/EditorThemeProvider.tsx";
 import { NavBar } from "./shared/components/NavBar/NavBar.tsx";
+import { PreviewBanner } from "./shared/components/PreviewBanner/PreviewBanner.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
       <ColorSchemeProvider namespace="global">
         <EditorThemeProvider namespace="editor">
           <CodeEditorSettingsProvider namespace="code-editor">
+            <PreviewBanner />
             <NavBar />
             <AppRoutes />
           </CodeEditorSettingsProvider>

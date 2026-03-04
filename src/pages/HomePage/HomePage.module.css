@@ -14,7 +14,7 @@
 .logo {
   width: 100%;
   max-width: 300px;
-  image-rendering: pixelated;
+  /* image-rendering: pixelated; */
   user-select: none;
   -webkit-user-select: none;
 }
