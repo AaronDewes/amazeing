@@ -16,6 +16,8 @@ export function About() {
       }
     >
       <div className="fancy-headers" style={{ maxWidth: "300px" }}>
+        <h6>{t("about.modifiedBy")}</h6>
+        Aaron Dewes
         <h6>{t("about.developedBy")}</h6>
         Yağız Aktaş{" "}
         <a
@@ -25,8 +27,6 @@ export function About() {
         >
           (Clickism <FaExternalLinkAlt size={12} />)
         </a>
-        <h6>{t("about.modifiedBy")}</h6>
-        Aaron Dewes
         <h6>{t("about.helpOf")}</h6>
         {t("about.tutors")}
         <h6>{t("about.sourceCode")} </h6>
