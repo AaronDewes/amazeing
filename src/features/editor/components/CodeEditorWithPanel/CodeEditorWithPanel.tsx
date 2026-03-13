@@ -12,6 +12,8 @@ type PanelProps = {
   name: string;
   content: ReactNode;
   icon: (open: boolean) => ReactNode;
+  minPixels?: number[];
+  initialSizes?: number[];
 };
 
 export type CodeEditorWithPanelProps = CodeEditorProps & {
@@ -31,8 +33,9 @@ export function CodeEditorWithPanel({
     <div className={clsx(styles.container, isMobile && styles.mobile)}>
       <PanelContainer
         orientation={!isMobile ? "horizontal" : "vertical"}
-        minSize={0.3}
         panelCount={panelOpen ? 2 : 1}
+        initialSizes={panel.initialSizes}
+        minPixels={panel.minPixels}
       >
         <motion.div
           layout

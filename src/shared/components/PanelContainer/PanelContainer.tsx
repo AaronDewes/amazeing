@@ -41,13 +41,17 @@ export function PanelContainer({
 
   const getMinFraction = useCallback(
     (index: number, containerSize: number): number => {
-      const fractionFromPixels =
-        minPixels && minPixels[index] !== undefined && containerSize > 0
-          ? minPixels[index] / containerSize
-          : 0;
+      const canUsePixels =
+        minPixels &&
+        minPixels[index] !== undefined &&
+        containerSize > 0 &&
+        minPixels.length === panelCount;
+      const fractionFromPixels = canUsePixels
+        ? minPixels[index] / containerSize
+        : 0;
       return Math.max(minSize, fractionFromPixels);
     },
-    [minPixels, minSize],
+    [minPixels, minSize, panelCount],
   );
 
   const handleMouseDown = (index: number) => (e: React.MouseEvent) => {
@@ -116,9 +120,13 @@ export function PanelContainer({
   useEffect(() => {
     setSizes((prev) => {
       if (prev.length === panelCount) return prev;
+      if (initialSizes?.length === panelCount) {
+        // Use initial sizes
+        return initialSizes;
+      }
       return Array(panelCount).fill(1 / panelCount);
     });
-  }, [panelCount]);
+  }, [initialSizes, panelCount]);
 
   const { isMobile } = useCalculateLayout();
 
@@ -135,8 +143,14 @@ export function PanelContainer({
               flexBasis: 0,
               flexGrow: sizes[i],
               flexShrink: 0,
-              minWidth: isHorizontal && minPixels?.[i] ? minPixels[i] : 0,
-              minHeight: !isHorizontal && minPixels?.[i] ? minPixels[i] : 0,
+              minWidth:
+                isHorizontal && i < panelCount && minPixels?.[i]
+                  ? minPixels[i]
+                  : 0,
+              minHeight:
+                !isHorizontal && i < panelCount && minPixels?.[i]
+                  ? minPixels[i]
+                  : 0,
             }}
           >
             {child}
