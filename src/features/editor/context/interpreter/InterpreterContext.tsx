@@ -3,6 +3,7 @@ import { type OwlData } from "../../../../core/game/owl.ts";
 import { createContext, useContext } from "react";
 import type { Level } from "../../../../core/game/level.ts";
 import type { MarkData } from "../../../../core/game/marks.ts";
+import type { EvaluatedConstraint } from "../../../../core/game/constraints.ts";
 
 export type InterpreterAPI = {
   // Game controls
@@ -23,6 +24,9 @@ export type InterpreterAPI = {
   output: ConsoleMessage[];
   currentLine: number | null;
   isRunning: boolean;
+
+  // Other
+  constraints?: EvaluatedConstraint[];
 };
 
 export const InterpreterContext = createContext<InterpreterAPI | null>(null);

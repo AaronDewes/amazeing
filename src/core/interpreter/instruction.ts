@@ -76,6 +76,8 @@ export type Instruction =
   | OneVarInstruction<"getmark">
   | OneVarInstruction<"getdir">;
 
+export type InstructionType = Instruction["type"];
+
 export type InstructionData = {
   instruction: Instruction;
   line: number;
@@ -83,7 +85,7 @@ export type InstructionData = {
 
 export type LabelDefinition = { label: string; pc: number };
 
-export const ALL_INSTRUCTIONS = [
+export const ALL_INSTRUCTIONS: InstructionType[] = [
   "move",
   "turn",
   "explore",

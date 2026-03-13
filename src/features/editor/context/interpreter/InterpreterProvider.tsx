@@ -63,6 +63,9 @@ export function InterpreterProvider({
   const [output, setOutput] = useState<ConsoleMessage[]>([]);
   const [currentLine, setCurrentLine] = useState<number | null>(null);
   const [isRunning, setIsRunning] = useState(false);
+  const [evaluatedConstraints, setEvaluatedConstraints] = useState<
+    EvaluatedConstraint[] | undefined
+  >(undefined);
 
   const onFinishRef = useRef(onFinish);
   onFinishRef.current = onFinish;
@@ -74,13 +77,12 @@ export function InterpreterProvider({
     if (!interpreter) return;
 
     if (constraints && constraints.length > 0) {
-      const instructions = interpreter.getInstructions();
-      const constraintsMet = validateConstraints(constraints, instructions);
+      const constraintsMet = validateConstraints(constraints, code);
       onFinishRef.current(constraintsMet);
     } else {
       onFinishRef.current([]);
     }
-  }, [constraints]);
+  }, [code, constraints]);
 
   // Game
   const [owlData, setOwlData] = useState<OwlData>(() => level.createOwlData());
@@ -247,7 +249,11 @@ export function InterpreterProvider({
   // Reset interpreter when code or level changes
   useEffect(() => {
     reset();
-  }, [code, level, reset]);
+    // Evaluate constraints
+    if (!constraints) return;
+    const evaluated = validateConstraints(constraints, code);
+    setEvaluatedConstraints(evaluated);
+  }, [code, constraints, level, reset]);
 
   // Restart running if run speed changes
   useEffect(() => {
@@ -272,6 +278,7 @@ export function InterpreterProvider({
         currentLine,
         isRunning,
         reset,
+        constraints: evaluatedConstraints,
       }}
     >
       {children}

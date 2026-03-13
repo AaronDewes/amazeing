@@ -4,8 +4,8 @@ import { useTranslatable } from "../../../../../shared/i18n/i18n.ts";
 import { useTasks } from "../../../../precourse/context/TasksContext.tsx";
 import { TaskSelector } from "../TaskSelector/TaskSelector.tsx";
 import clsx from "clsx";
-import type { EvaluatedConstraint } from "../../../../../core/game/constraints.ts";
 import { ConstraintsView } from "./ConstraintsView/ConstraintsView.tsx";
+import { useInterpreter } from "../../../context/interpreter/InterpreterContext.tsx";
 
 export function TaskView() {
   const { t } = useTranslatable();
@@ -19,8 +19,7 @@ export function TaskView() {
   const partiallyCompletedTasksInDay = day.tasks.filter(
     (t) => partiallyCompletedTasks[t.id] !== undefined,
   ).length;
-  const constraints: EvaluatedConstraint[] =
-    partiallyCompletedTasks[task.id] || task.constraints || [];
+  const { constraints } = useInterpreter();
   return (
     <>
       <div className={styles.currentTaskContainer}>
@@ -31,7 +30,7 @@ export function TaskView() {
         <div className={styles.title}>{t(task.title)}</div>
         <div className={styles.separator} />
         <div className={styles.description}>{t(task.description)}</div>
-        {task.constraints && (
+        {constraints && (
           <>
             <div className={styles.separator} />
             <ConstraintsView constraints={constraints} />
