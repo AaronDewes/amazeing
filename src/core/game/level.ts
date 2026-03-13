@@ -78,7 +78,7 @@ export class Level {
       // We don't actually need to check if all reachable tiles have been touched one-by-one,
       // Because the positionHistory can only grow when the owl moves to a new tile.
       return reachableTiles.length === owl.positionHistory.size;
-    };
+    }
     return (
       owl.position.x === this.data.finishPosition.x &&
       owl.position.y === this.data.finishPosition.y
