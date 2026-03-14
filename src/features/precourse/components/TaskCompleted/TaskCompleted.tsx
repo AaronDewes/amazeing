@@ -7,6 +7,7 @@ import { type Day, translateDayId } from "../../day.ts";
 import type { ModalContext } from "../../../../shared/floating/context/ModalContext.tsx";
 import { ConstraintsView } from "../../../editor/components/TaskCodeEditor/TaskView/ConstraintsView/ConstraintsView.tsx";
 import { TbArrowBackUp } from "react-icons/tb";
+import { LuPartyPopper } from "react-icons/lu";
 
 type TaskCompletedProps = {
   task: Task;
@@ -24,7 +25,12 @@ export function TaskCompleted({
   const { t } = useTranslation();
   // Set up modal props
   modal.setProps({
-    title: t("taskCompleted.title"),
+    title: (
+      <div className="flex-text" style={{ color: "var(--clr-success-a10)" }}>
+        <LuPartyPopper />
+        {t("taskCompleted.title")}
+      </div>
+    ),
     maxWidth: 600,
   });
   // Find next task
