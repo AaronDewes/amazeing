@@ -1,4 +1,4 @@
-import type { Task, TaskData } from "./task.ts";
+import { loadTaskFromString, type Task, type TaskData } from "./task.ts";
 import type { Translator } from "../../shared/i18n/i18n.ts";
 
 export type Day = {
@@ -6,8 +6,9 @@ export type Day = {
   tasks: Task[];
 };
 
-const taskModules = import.meta.glob("./tasks/**/*.json", {
+const taskModules = import.meta.glob("./tasks/**/*.json5", {
   eager: true,
+  query: "?raw",
   import: "default",
 });
 
@@ -17,7 +18,8 @@ export function loadDays(): Day[] {
   for (const path in taskModules) {
     // Only consider days tasks
     if (!path.startsWith("./tasks/days/")) continue;
-    const taskData = taskModules[path] as TaskData;
+    const raw = taskModules[path] as string;
+    const taskData = loadTaskFromString(raw);
     const { dayId, taskKey } = extractDayAndTask(path);
 
     const taskNumber = parseInt(taskKey.replace("task", ""), 10);
@@ -46,19 +48,20 @@ export function loadDays(): Day[] {
  * @param pathToTask relative path to the task JSON file (e.g., "sandbox/task1") without the ".json" extension.
  */
 export function loadTask(pathToTask: string): TaskData {
-  const fullPath = `./tasks/${pathToTask}.json`;
+  const fullPath = `./tasks/${pathToTask}.json5`;
   if (!(fullPath in taskModules)) {
     throw new Error(`Task not found at path: ${fullPath}`);
   }
-  return taskModules[fullPath] as TaskData;
+  const raw = taskModules[fullPath] as string;
+  return loadTaskFromString(raw);
 }
 
 function extractDayAndTask(path: string): { dayId: string; taskKey: string } {
   const parts = path.split("/");
-  // Extract "dayX" from the path "./tasks/dayX/taskY.json"
+  // Extract "dayX" from the path "./tasks/dayX/taskY.json5"
   const dayId = parts[parts.length - 2];
   // Extract "taskY" and remove ".json"
-  const taskKey = parts[parts.length - 1].replace(".json", "");
+  const taskKey = parts[parts.length - 1].replace(/\.json5?/, "");
   return { dayId, taskKey };
 }
 

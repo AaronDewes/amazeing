@@ -85,18 +85,18 @@
   "levelEditor.taskExport.taskMeta": "Aufgabe-Metadaten",
   "levelEditor.taskExport.taskMeta.title": "Aufgabetitel",
   "levelEditor.taskExport.taskMeta.description": "Aufgabebeschreibung",
-  "levelEditor.taskExport.exportJson": "Json exportieren",
-  "levelEditor.taskExport.exportedJson": "Exportiertes Aufgabe-Json",
+  "levelEditor.taskExport.exportJson": "Json5 exportieren",
+  "levelEditor.taskExport.exportedJson": "Exportiertes Aufgabe-Json5",
   "levelEditor.taskExport.startingCode": "Starter-Code (Nur Englisch)",
   "levelEditor.taskExport.other": "Andere Optionen",
 
   "levelEditor.taskExport.taskMeta.default.title": "Unbenannte Aufgabe",
   "levelEditor.taskExport.taskMeta.default.description": "Keine Beschreibung vorhanden.",
 
-  "levelEditor.taskImport.json": "Aufgabe-Json",
+  "levelEditor.taskImport.json": "Aufgabe-Json5",
   "levelEditor.taskImport.import.header": "Importieren",
   "levelEditor.taskImport.import.warning": "Dies überschreibt alle Daten des aktuell geöffneten Levels. Erstelle ein neues leeres Level, wenn du das aktuelle behalten möchtest.",
-  "levelEditor.taskImport.import": "Aus Json importieren",
+  "levelEditor.taskImport.import": "Aus Json5 importieren",
 
   "levelList.newLevel": "Neues Level",
 

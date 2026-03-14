@@ -85,18 +85,18 @@
   "levelEditor.taskExport.taskMeta": "Task Metadata",
   "levelEditor.taskExport.taskMeta.title": "Task Title",
   "levelEditor.taskExport.taskMeta.description": "Task Description",
-  "levelEditor.taskExport.exportJson": "Export Json",
-  "levelEditor.taskExport.exportedJson": "Exported Task Json",
+  "levelEditor.taskExport.exportJson": "Export Json5",
+  "levelEditor.taskExport.exportedJson": "Exported Task Json5",
   "levelEditor.taskExport.startingCode": "Starting Code (English Only)",
   "levelEditor.taskExport.other": "Other Options",
 
   "levelEditor.taskExport.taskMeta.default.title": "Untitled Task",
   "levelEditor.taskExport.taskMeta.default.description": "No description provided.",
 
-  "levelEditor.taskImport.json": "Task Json",
+  "levelEditor.taskImport.json": "Task Json5",
   "levelEditor.taskImport.import.header": "Import",
   "levelEditor.taskImport.import.warning": "This will override all data of the currently open level. Create a new empty level if you want to keep the current one.",
-  "levelEditor.taskImport.import": "Import From Json",
+  "levelEditor.taskImport.import": "Import From Json5",
 
   "levelList.newLevel": "New Level",
 
