@@ -18,6 +18,8 @@
   "codeEditor.resetCode.confirm": "Are you sure you want to reset your code for this task? All code changes will be lost.",
   "codeEditor.resetCode.confirm.cannotUndo": "This action cannot be undone.",
 
+  "codeEditor.markUncompleted": "Mark as Uncompleted",
+
   "fileList.newFile": "New File",
   "fileList.rename": "Rename",
   "fileList.rename.action": "Rename File",
@@ -124,10 +126,10 @@
   "home.levelEditor.button": "Go to Level Editor",
   "home.levelEditor.description": "Create your own custom maze levels and play them in the sandbox or export them.",
 
-  "taskView.constraints.title": "Constraints",
-  "taskView.constraints.explanation": "Your solution must satisfy the following constraints to be considered fully correct:",
+  "constraintsView.title": "Constraints",
+  "constraintsView.tooltip": "Your solution must satisfy these constraints to be considered fully correct",
 
-  "constraints.max-instructions": "Not more than {{count}} instructions",
-  "constraints.max-instruction-count": "Not more than {{count}} use(s) of the {{ instruction }} instruction",
-  "constraints.allowed-instructions": "Only the following instructions are allowed: {{ allowed }}"
+  "constraints.max-instructions": "At most {{count}} instructions(s)",
+  "constraints.max-instruction-count": "At most {{count}} \"{{ instruction }}\" instruction(s)",
+  "constraints.allowed-instructions": "Allowed instructions: {{ allowed }}"
 }

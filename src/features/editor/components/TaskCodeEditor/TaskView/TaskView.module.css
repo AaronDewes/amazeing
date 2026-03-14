@@ -25,6 +25,8 @@
 .description {
   font-size: 14px;
   color: var(--text-color-t80);
+  max-height: 150px;
+  overflow: auto;
 }
 
 .separator {
@@ -84,23 +86,4 @@
 
 .progressBar.partial {
   background-color: var(--clr-warning-a10);
-}
-
-.constraintsTitle {
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 6px;
-}
-
-.constraintsExplanation, .constraint {
-  font-size: 14px;
-  color: var(--text-color-t80);
-}
-
-.constraintMet {
-  color: var(--clr-success-a10);
-}
-
-.constraintUnmet {
-  color: var(--clr-warning-a10);
 }

@@ -110,7 +110,8 @@
   }
 }
 
-.documentation .quoted {
+.documentation .quoted,
+.quoted-code {
   font-weight: 600;
   font-size: 14px;
   font-family: "JetBrains Mono", monospace;

@@ -1,0 +1,40 @@
+
+.explanation, .constraint {
+  font-size: 14px;
+  color: var(--text-color-t80);
+}
+
+.counter {
+  transition: color .2s;
+}
+
+.constraint.met,
+.closed .counterMet {
+  color: var(--clr-success-a10);
+}
+
+.constraint.unmet,
+.closed .counterUnmet  {
+  color: var(--clr-danger-a10);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 8px;
+}
+
+.constraint {
+  display: flex;
+  gap: 8px;
+}
+
+.icon {
+  margin-top: 2px;
+}
+
+.icon svg {
+  width: 14px;
+}
+

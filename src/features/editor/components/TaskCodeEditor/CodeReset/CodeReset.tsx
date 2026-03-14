@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useCodeModel } from "../../../context/code/CodeModelContext.tsx";
 import { useTasks } from "../../../../precourse/context/TasksContext.tsx";
 import { useFloatingContext } from "../../../../../shared/floating/FloatingContext/FloatingContext.tsx";
+import { MdRemoveDone } from "react-icons/md";
 
 export function CodeReset() {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ export function CodeReset() {
           <strong>{t("codeEditor.resetCode.confirm.cannotUndo")}</strong>
         </div>
         <ResetButton />
+        <MarkUncompletedButton />
       </ButtonGroup>
     </Popover>
   );
@@ -43,6 +45,24 @@ function ResetButton() {
     <Button variant="danger" onClick={handleReset}>
       <LuListRestart size={22} />
       {t("codeEditor.resetCode")}
+    </Button>
+  );
+}
+
+function MarkUncompletedButton() {
+  const { t } = useTranslation();
+  const { task, setCompleted, completedTasks } = useTasks();
+  const isCompleted = completedTasks.includes(task.id);
+  if (!isCompleted) return null;
+  return (
+    <Button
+      variant="secondary"
+      onClick={() => {
+        setCompleted(task.id, false);
+      }}
+    >
+      <MdRemoveDone />
+      {t("codeEditor.markUncompleted")}
     </Button>
   );
 }

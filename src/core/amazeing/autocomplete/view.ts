@@ -1,6 +1,7 @@
 import type { Documentation } from "../documentation/documentation.ts";
 import { classHighlighter, highlightCode } from "@lezer/highlight";
 import { docLanguage } from "./docLanguage.ts";
+import { extractQuotedText } from "../../../shared/utils/utils.ts";
 
 export function getCompletionNode(doc: Documentation) {
   const docs = Array.isArray(doc) ? doc : [doc];
@@ -57,15 +58,15 @@ function getTextElement(text: string, className: string) {
   const elem = document.createElement("div");
   elem.className = className;
 
-  const parts = text.split(/(".*?")/g);
+  const parts = extractQuotedText(text);
   for (const part of parts) {
-    if (part.startsWith('"') && part.endsWith('"')) {
+    if (part.quoted) {
       const span = document.createElement("span");
       span.className = "quoted";
-      span.textContent = part.slice(1, -1);
+      span.textContent = part.text;
       elem.appendChild(span);
     } else {
-      elem.appendChild(document.createTextNode(part));
+      elem.appendChild(document.createTextNode(part.text));
     }
   }
 
