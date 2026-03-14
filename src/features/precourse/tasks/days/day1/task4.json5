@@ -1,13 +1,13 @@
 {
   title: {
     en: 'Sub-Routines',
-    de: 'Sub-Routines',
+    de: 'Unterprogramme',
   },
   description: {
     en: 'In this labyrinth, the goal can be reached by going straight ahead to the next wall, then turning to the right and \
       repeating these two steps until the goal is reached. First, write a program in which the owl walks straight ahead until it reaches the next wall. Then use a label straightToWall so you can jump to the code you just wrote. Solve the maze with the help of the subprogram which is now referenced by the label straightToWall.',
-    de: 'In this labyrinth, the goal can be reached by going straight ahead to the next wall, then turning to the right and \
-      repeating these two steps until the goal is reached. First, write a program in which the owl walks straight ahead until it reaches the next wall. Then use a label straightToWall so you can jump to the code you just wrote. Solve the maze with the help of the subprogram which is now referenced by the label straightToWall.',
+    de: 'In diesem Labyrinth kann das Ziel erreicht werden, indem die Eule geradeaus zur nächsten Wand geht, sich dann nach rechts dreht und \
+      diese beiden Schritte wiederholt, bis das Ziel erreicht ist. Schreibe zuerst ein Programm, in dem die Eule geradeaus geht, bis sie den nächsten Wall erreicht. Dann verwende ein Label straightToWall, damit du zum Code springen kannst, den du gerade geschrieben hast. Löse das Labyrinth mit Hilfe des Unterprogramms, auf das nun der Label straightToWall verweist.',
   },
   levelData: {
     maze: {

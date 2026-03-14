@@ -1,11 +1,11 @@
 {
   title: {
     en: 'Right-Hand Rule',
-    de: 'Right-Hand Rule',
+    de: 'Rechte-Hand-Regel',
   },
   description: {
     en: 'Please have a look at the sheet for detailed instructions!',
-    de: 'Please have a look at the sheet for detailed instructions!',
+    de: 'Bitte schau dir das Blatt für detaillierte Anweisungen an!',
   },
   levelData: {
     maze: {

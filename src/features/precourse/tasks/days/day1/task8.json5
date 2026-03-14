@@ -7,9 +7,10 @@
     en: 'Problems can be solved theoretically by trying all possibilities. This procedure is called brute force. \
       The aim of this task is to solve the maze with a special strategy, which is successful in many mazes: Before each \
       step, check the markings on the current square. If all directions are marked, stop. Otherwise, turn the owl in a direction that is not yet marked, mark it and take one step forward.',
-    de: 'Problems can be solved theoretically by trying all possibilities. This procedure is called brute force. \
-      The aim of this task is to solve the maze with a special strategy, which is successful in many mazes: Before each \
-      step, check the markings on the current square. If all directions are marked, stop. Otherwise, turn the owl in a direction that is not yet marked, mark it and take one step forward.',
+    de: 'Probleme können theoretisch gelöst werden, indem alle Möglichkeiten ausprobiert werden. Dieses Verfahren wird Brute Force genannt. \
+      Ziel dieser Aufgabe ist es, das Labyrinth mit einer speziellen Strategie zu lösen, die in vielen Labyrinthen erfolgreich ist: \
+      Vor jedem Schritt überprüfe die Markierungen auf dem aktuellen Feld. Wenn alle Richtungen markiert sind, stoppe.  \
+      Andernfalls drehe die Eule in eine Richtung, die noch nicht markiert ist, markiere sie und mache einen Schritt vorwärts.',
   },
   levelData: {
     maze: {

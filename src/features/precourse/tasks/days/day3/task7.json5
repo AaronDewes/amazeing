@@ -5,7 +5,7 @@
   },
   description: {
     en: 'In this task we will implement a queue using stacks. A queue works according to the FIFO-principle (First in, first out). Your implementation should permit the following operations: QueueInit, QueuePush, QueuePop, and QueueEmpty, where the arguments and return values correspond to those of the stack.',
-    de: 'In this task we will implement a queue using stacks. A queue works according to the FIFO-principle (First in, first out). Your implementation should permit the following operations: QueueInit, QueuePush, QueuePop, and QueueEmpty, where the arguments and return values correspond to those of the stack.',
+    de: 'In dieser Aufgabe wollen wir eine Queue mit Hilfe von Stacks implementieren. Eine Queue funktioniert nach dem FIFO-Prinzip (First in, first out). Deine Implementierung soll die folgenden Operationen erlauben: QueueInit, QueuePush, QueuePop und QueueEmpty, wobei die Argumente und Rückgabewerte denen des Stacks entsprechen.',
   },
   levelData: {
     maze: {

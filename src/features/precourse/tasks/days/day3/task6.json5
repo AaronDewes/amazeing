@@ -6,8 +6,8 @@
   description: {
     en: 'In this exercise, we want to implement the depth-first search algorithm. \
       Take a look at sheet 3 for further information.',
-    de: 'In this exercise, we want to implement the depth-first search algorithm. \
-      Take a look at sheet 3 for further information.',
+    de: 'In dieser Aufgabe wollen wir den Depth-First-Search Algorithmus implementieren. \
+      Schau dir dazu das Blatt 3 für weitere Informationen an.',
   },
   levelData: {
     maze: {

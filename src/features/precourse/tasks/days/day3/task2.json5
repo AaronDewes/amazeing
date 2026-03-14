@@ -1,11 +1,11 @@
 {
   title: {
     en: 'In Circles',
-    de: 'In Circles',
+    de: 'Im Kreis',
   },
   description: {
     en: 'The strategy from the previous task leads to the owl running in circles in this maze. Change the solution from the previous task so that the current field is marked before each right turn. As soon as a marked field is reached for the second time, the right turn is to be replaced by a left turn.',
-    de: 'The strategy from the previous task leads to the owl running in circles in this maze. Change the solution from the previous task so that the current field is marked before each right turn. As soon as a marked field is reached for the second time, the right turn is to be replaced by a left turn.',
+    de: 'Die Strategie aus der vorherigen Aufgabe führt dazu, dass die Eule in diesem Labyrinth im Kreis rennt. Ändere die Lösung aus der vorherigen Aufgabe so, dass das aktuelle Feld vor jeder Rechtsdrehung markiert wird. Sobald ein markiertes Feld zum zweiten Mal erreicht wird, soll die Rechtsdrehung durch eine Linksdrehung ersetzt werden.',
   },
   levelData: {
     maze: {

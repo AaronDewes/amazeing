@@ -1,13 +1,13 @@
 {
   title: {
     en: 'Straight Ahead',
-    de: 'Straight Ahead',
+    de: 'Geradeaus',
   },
   description: {
     en: 'This maze is very simple, you only have to go straight ahead. Solve the maze with only one move command! The jump command can be helpful for this. \
-      (If you bump into a wall you cannot go on and you have to restart the Task)',
-    de: 'This maze is very simple, you only have to go straight ahead. Solve the maze with only one move command! The jump command can be helpful for this. \
-      (If you bump into a wall you cannot go on and you have to restart the Task)',
+      (If you bump into a wall you cannot go on and you have to restart the task)',
+    de: 'Dieses Labyrinth ist sehr einfach, du musst nur geradeaus gehen. Löse das Labyrinth mit nur einem einzigen move-Befehl! Der jump-Befehl kann dabei hilfreich sein. \
+      (Wenn du gegen eine Wand stößt, kannst du nicht weitergehen und musst die Aufgabe neu starten)',
   },
   levelData: {
     maze: {

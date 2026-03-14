@@ -5,7 +5,7 @@
   },
   description: {
     en: 'Implement the algorithm described on the exercise sheet',
-    de: 'Implement the algorithm described on the exercise sheet',
+    de: 'Implementiere den auf dem Exercise Sheet beschriebenen Algorithmus',
   },
   levelData: {
     maze: {
