@@ -1,11 +1,15 @@
 {
   title: {
     en: 'Exploring Walls',
-    de: 'Exploring Walls',
+    de: 'Wände Erkunden',
   },
   description: {
-    en: 'In this labyrinth, too, the path is straight ahead at first. As soon as the owl has hit a wall, only one step to the right is missing. Extend the solution of the previous task! The commands explore and branch can be helpful here.',
-    de: 'In this labyrinth, too, the path is straight ahead at first. As soon as the owl has hit a wall, only one step to the right is missing. Extend the solution of the previous task! The commands explore and branch can be helpful here.',
+    en: 'In this maze, you only have to go straight ahead until you hit a wall, then turn right and move once. \
+      Extend the solution of the previous task! \
+      <hint>The commands "explore" and "branch" can be helpful here.</hint>',
+    de: 'In diesem Labyrinth musst du nur geradeaus gehen, bis du auf eine Wand triffst, dann nach rechts drehen und einmal vorwärts gehen. \
+      Erweitere die Lösung der vorherigen Aufgabe! \
+      <hint>Die Befehle "explore" und "branch" können dir dabei helfen.</hint>',
   },
   levelData: {
     maze: {
@@ -33,4 +37,11 @@
       start: \
       move \
       jump start',
+  constraints: [
+    {
+      type: 'max-instruction-count',
+      instruction: 'move',
+      count: 1,
+    },
+  ]
 }
