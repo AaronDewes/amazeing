@@ -30,7 +30,7 @@ export function TaskCompleted({
         {t("taskCompleted.title")}
       </div>
     ),
-    maxWidth: 600,
+    maxWidth: 500,
   });
   // Find next task
   const currentDayIdx = days.findIndex((d) => d.id === task.dayId);

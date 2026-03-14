@@ -142,5 +142,10 @@
   "taskCompleted.continue.noMoreTasks": "You have completed the last task. You can now stay on the current task to take a close look at your solution, or go back to earlier tasks.",
   "taskCompleted.nextTask": "Next Task",
   "taskCompleted.nextDay": "Continue to {{day}}",
-  "taskCompleted.stayOnTask": "Stay here"
+  "taskCompleted.stayOnTask": "Stay here",
+
+  "unmetConstraints.title": "Unmet Constraints",
+  "unmetConstraints.description": "You solved the task, but your solution does not meet the following constraints:",
+  "unmetConstraints.continue": "What to do now?",
+  "unmetConstraints.checkSolution": "Go back and check your solution"
 }
