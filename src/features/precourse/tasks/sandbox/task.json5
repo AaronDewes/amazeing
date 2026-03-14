@@ -1,0 +1,33 @@
+{
+  title: {
+    en: 'Sandbox',
+    de: 'Sandbox',
+  },
+  description: {
+    en: 'A tiny 3x3 test maze.',
+    de: 'Ein winziges 3x3 Testlabyrinth.',
+  },
+  levelData: {
+    name: 'Sandbox Level',
+    maze: {
+      theme: 'plains',
+      width: 3,
+      height: 3,
+      walls: {
+        horizontal: '000-101-000-000',
+        vertical: '0000-0110-0000',
+      },
+    },
+    owlStart: {
+      position: {
+        x: 0,
+        y: 0,
+      },
+      direction: 'south',
+    },
+    finishPosition: {
+      x: 2,
+      y: 2,
+    },
+  },
+}
