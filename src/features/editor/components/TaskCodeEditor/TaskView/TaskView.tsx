@@ -6,7 +6,7 @@ import { TaskSelector } from "../TaskSelector/TaskSelector.tsx";
 import clsx from "clsx";
 import { ConstraintsView } from "./ConstraintsView/ConstraintsView.tsx";
 import { useInterpreter } from "../../../context/interpreter/InterpreterContext.tsx";
-import { QuotedText } from "../../../../../shared/components/QuotedText/QuotedText.tsx";
+import { TaskDescription } from "./TaskDescription/TaskDescription.tsx";
 
 export function TaskView() {
   const { t } = useTranslatable();
@@ -28,7 +28,7 @@ export function TaskView() {
         <div className={styles.title}>{t(task.title)}</div>
         <div className={styles.separator} />
         <div className={styles.description}>
-          <QuotedText text={t(task.description)} />
+          <TaskDescription description={t(task.description)} />
         </div>
         {constraints && (
           <>

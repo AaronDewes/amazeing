@@ -7,6 +7,8 @@
   --text-color-t80: color-mix(in srgb, var(--text-color) 80%, var(--clr-surface-a0));
   --text-color-t70: color-mix(in srgb, var(--text-color) 70%, var(--clr-surface-a0));
   --text-color-t60: color-mix(in srgb, var(--text-color) 60%, var(--clr-surface-a0));
+  --text-color-t50: color-mix(in srgb, var(--text-color) 50%, var(--clr-surface-a0));
+  --text-color-t40: color-mix(in srgb, var(--text-color) 40%, var(--clr-surface-a0));
   --box-shadow-color: rgba(0, 0, 0, 0.5);
 
   /** Base colors */
