@@ -1,13 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "../../../../shared/components/Button/Button.tsx";
 import { ButtonGroup } from "../../../../shared/components/Button/ButtonGroup/ButtonGroup.tsx";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight, FaTrophy } from "react-icons/fa6";
 import type { Task } from "../../task.ts";
 import { type Day, translateDayId } from "../../day.ts";
 import type { ModalContext } from "../../../../shared/floating/context/ModalContext.tsx";
 import { ConstraintsView } from "../../../editor/components/TaskCodeEditor/TaskView/ConstraintsView/ConstraintsView.tsx";
 import { TbArrowBackUp } from "react-icons/tb";
-import { LuPartyPopper } from "react-icons/lu";
 
 type TaskCompletedProps = {
   task: Task;
@@ -26,8 +25,8 @@ export function TaskCompleted({
   // Set up modal props
   modal.setProps({
     title: (
-      <div className="flex-text" style={{ color: "var(--clr-success-a10)" }}>
-        <LuPartyPopper />
+      <div className="flex-text" style={{ color: "var(--clr-warning-a10)" }}>
+        <FaTrophy />
         {t("taskCompleted.title")}
       </div>
     ),
