@@ -29,24 +29,24 @@
       direction: 'north',
     },
   },
-  startingCode: "var t \
-      var result \
-      # Insert your Code around the 'return' marker \
-      return: \
-      # Given guess subroutine, guesses a turn for you to take \
-      # 0 -> left, 1 -> right \
-      guess: \
-          var zero \
-          load zero 0 \
-          var direction d \
-          getdir d \
-          var b \
-          eq b d east \
-          branch b e \
-          load result 0 \
-          jump return \
-      e: \
-          load result 1 \
-          jump return \
+  startingCode: "var t
+      var result
+      # Insert your Code around the 'return' marker
+      return:
+      # Given guess subroutine, guesses a turn for you to take
+      # 0 -> left, 1 -> right
+      guess:
+          var zero
+          load zero 0
+          var direction d
+          getdir d
+          var b
+          eq b d east
+          branch b e
+          load result 0
+          jump return
+      e:
+          load result 1
+          jump return
       ",
 }
