@@ -32,7 +32,7 @@ function renderNode(node: ChildNode, key: number): ReactNode {
   }
 }
 
-type Tag = "hint";
+type Tag = "hint" | "br";
 type TagRenderer = (children: ReactNode[]) => ReactNode;
 
 /**
@@ -49,6 +49,7 @@ const renderers: Partial<Record<Tag, TagRenderer>> = {
       <div>{children}</div>
     </IconText>
   ),
+  br: () => <br />,
 };
 
 function defaultRenderer(tag: Tag): TagRenderer {
