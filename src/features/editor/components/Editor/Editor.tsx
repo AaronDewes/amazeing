@@ -17,6 +17,7 @@ import type { FileStorage } from "../../context/storage/fileStorage.ts";
 import type { LevelData } from "../../../../core/game/level.ts";
 import { useCalculateLayout } from "../../../../shared/utils/useCalculateLayout.tsx";
 import clsx from "clsx";
+import { useState } from "react";
 
 export const MIN_RUN_SPEED = 1;
 export const MAX_RUN_SPEED = 100;
@@ -48,12 +49,14 @@ export function Editor({ levelStorage, owlControls = false }: EditorProps) {
     settings.instructionsPerSecond,
   );
   const { isMobile } = useCalculateLayout();
+  // Open by default if not multi-source (sandbox)
+  const [codePanelOpen, setCodePanelOpen] = useState(!isMultiSource(source));
   return (
     <div className={clsx(styles.editorContainer, isMobile && styles.mobile)}>
       <PanelContainer
         orientation={!isMobile ? "horizontal" : "vertical"}
         minSize={0.3}
-        minPixels={[owlControls ? 620 : 570, 400]}
+        minPixels={[owlControls ? 620 : 570, codePanelOpen ? 650 : 400]}
       >
         <PanelContainer
           orientation="vertical"
@@ -81,11 +84,17 @@ export function Editor({ levelStorage, owlControls = false }: EditorProps) {
           <FileCodeEditor
             editorExtensions={[currentLineHighlighter(() => currentLine)]}
             transitionDuration={transitionDuration}
+            onPanelChange={(open) => {
+              setCodePanelOpen(open);
+            }}
           />
         ) : (
           <TaskCodeEditor
             editorExtensions={[currentLineHighlighter(() => currentLine)]}
             transitionDuration={transitionDuration}
+            onPanelChange={(open) => {
+              setCodePanelOpen(open);
+            }}
           />
         )}
       </PanelContainer>

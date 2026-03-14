@@ -19,12 +19,14 @@ type PanelProps = {
 export type CodeEditorWithPanelProps = CodeEditorProps & {
   initialOpen?: boolean;
   panel: PanelProps;
+  onPanelChange?: (open: boolean) => void;
 };
 
 export function CodeEditorWithPanel({
   initialOpen = false,
   panel,
   topBar,
+  onPanelChange,
   ...props
 }: CodeEditorWithPanelProps) {
   const [panelOpen, setPanelOpen] = useState(initialOpen);
@@ -51,7 +53,12 @@ export function CodeEditorWithPanel({
                 right: [
                   <Button
                     shape={isMobile ? "icon" : "default"}
-                    onClick={() => setPanelOpen((prev) => !prev)}
+                    onClick={() =>
+                      setPanelOpen((prev) => {
+                        onPanelChange?.(!prev);
+                        return !prev;
+                      })
+                    }
                   >
                     {panel.icon(panelOpen)}
                     {isMobile ? undefined : panel.name}
