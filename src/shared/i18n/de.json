@@ -18,6 +18,8 @@
   "codeEditor.resetCode.confirm": "Bist du sicher, dass du deinen Code für diese Aufgabe zurücksetzen möchtest? Alle Codeänderungen gehen verloren.",
   "codeEditor.resetCode.confirm.cannotUndo": "Dies kann nicht rückgängig gemacht werden.",
 
+  "codeEditor.markUncompleted": "Als nicht gelöst markieren",
+
   "fileList.newFile": "Neue Datei",
   "fileList.rename": "Umbenennen",
   "fileList.rename.action": "Datei umbenennen",

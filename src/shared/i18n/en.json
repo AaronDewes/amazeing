@@ -18,6 +18,8 @@
   "codeEditor.resetCode.confirm": "Are you sure you want to reset your code for this task? All code changes will be lost.",
   "codeEditor.resetCode.confirm.cannotUndo": "This action cannot be undone.",
 
+  "codeEditor.markUncompleted": "Mark as Uncompleted",
+
   "fileList.newFile": "New File",
   "fileList.rename": "Rename",
   "fileList.rename.action": "Rename File",
