@@ -5,10 +5,10 @@
   },
   description: {
     en: 'In this maze, you only have to go straight ahead until you hit a wall, then turn right and move once. \
-      Extend the solution of the previous task! \
+      Extend your solution of the previous task! \
       <hint>The commands "explore" and "branch" can be helpful here.</hint>',
     de: 'In diesem Labyrinth musst du nur geradeaus gehen, bis du auf eine Wand triffst, dann nach rechts drehen und einmal vorwärts gehen. \
-      Erweitere die Lösung der vorherigen Aufgabe! \
+      Erweitere deine Lösung der vorherigen Aufgabe! \
       <hint>Die Befehle "explore" und "branch" können dir dabei helfen.</hint>',
   },
   levelData: {
