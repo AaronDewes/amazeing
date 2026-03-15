@@ -167,6 +167,13 @@ export class Environment {
       this.set(identifier, []);
       return;
     }
+    if (isArg(identifier)) {
+      // Do not allow redefining arguments
+      throw new ErrorWithTip(
+        `Cannot redefine argument variable "${identifier}".`,
+        `You don't need to define argument variables before using them.`,
+      );
+    }
     this.set(identifier, null);
   }
 
