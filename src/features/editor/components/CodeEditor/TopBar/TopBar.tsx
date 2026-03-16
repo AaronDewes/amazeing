@@ -14,18 +14,21 @@ export type TopBarProps = {
 export function TopBar({ title, left, right, settingsButton }: TopBarProps) {
   return (
     <div className={styles.topBar}>
-      {title && (
-        <Button variant="secondary" className={clsx(styles.title)}>
-          {title}
-        </Button>
-      )}
-      {left?.map((item, i) => (
-        <Fragment key={i}>{item}</Fragment>
-      ))}
-      <div className={styles.separator} />
-      {right?.map((item, i) => (
-        <Fragment key={i}>{item}</Fragment>
-      ))}
+      <div className={styles.left}>
+        {title && (
+          <Button variant="secondary" className={clsx(styles.title)}>
+            <span>{title}</span>
+          </Button>
+        )}
+        {left?.map((item, i) => (
+          <Fragment key={i}>{item}</Fragment>
+        ))}
+      </div>
+      <div className={styles.right}>
+        {right?.map((item, i) => (
+          <Fragment key={i}>{item}</Fragment>
+        ))}
+      </div>
       {settingsButton && <CodeEditorSettings />}
     </div>
   );
