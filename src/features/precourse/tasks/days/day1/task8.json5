@@ -1,4 +1,5 @@
 {
+  extraInfo: 'Bonus',
   title: {
     en: 'Bonus: Brute Force',
     de: 'Bonus: Brute Force',

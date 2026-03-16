@@ -7,12 +7,7 @@ import clsx from "clsx";
 
 export function TaskSelector() {
   const { t } = useTranslatable();
-  const {
-    task: currentTask,
-    setTaskId,
-    days,
-    completedTasks,
-  } = useTasks();
+  const { task: currentTask, setTaskId, days, completedTasks } = useTasks();
   return (
     <List
       elements={days.map((day) => ({
@@ -26,7 +21,8 @@ export function TaskSelector() {
                 completedTasks.includes(task.id) && styles.completed,
               )}
             >
-              {t("day.task", { num: task.taskNumber })}
+              {t("day.task", { num: task.taskNumber }) +
+                (task.extraInfo ? ` (${t(task.extraInfo)})` : "")}
             </div>
           ),
         })),
