@@ -85,10 +85,12 @@
   "levelEditor.taskExport.taskMeta": "Task Metadata",
   "levelEditor.taskExport.taskMeta.title": "Task Title",
   "levelEditor.taskExport.taskMeta.description": "Task Description",
-  "levelEditor.taskExport.exportJson": "Export Json5",
+  "levelEditor.taskExport.exportJson": "Export Task Json5",
   "levelEditor.taskExport.exportedJson": "Exported Task Json5",
   "levelEditor.taskExport.startingCode": "Starting Code (English Only)",
   "levelEditor.taskExport.other": "Other Options",
+  "levelEditor.levelExport.exportJson": "Export Level Data Json5",
+  "levelEditor.levelExport.exportedJson": "Exported Level Data Json5",
 
   "levelEditor.taskExport.taskMeta.default.title": "Untitled Task",
   "levelEditor.taskExport.taskMeta.default.description": "No description provided.",
@@ -147,5 +149,9 @@
   "unmetConstraints.title": "Unmet Constraints",
   "unmetConstraints.description": "You solved the task, but your solution does not meet the following constraints:",
   "unmetConstraints.continue": "What to do now?",
-  "unmetConstraints.checkSolution": "Go back and check your solution"
+  "unmetConstraints.checkSolution": "Go back and check your solution",
+
+  "taskDescription.hint": "Show Hint",
+  "taskDescription.remark": "Show Remark",
+  "taskDescription.referToSheet": "Have a look at the exercise sheet for detailed instructions!"
 }

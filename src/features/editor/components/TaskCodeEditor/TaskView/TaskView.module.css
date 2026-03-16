@@ -1,14 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  overflow: hidden;
+}
+
 .currentTaskContainer {
   padding: 1.5rem 1rem 1rem 1rem;
   min-width: 250px;
   background-color: var(--clr-surface-a10);
   border-radius: 1rem;
   border-bottom: 1px solid var(--clr-surface-a20);
-  box-shadow: 0 4px 0px var(--clr-primary-a0);
+  box-shadow: 0 4px 0 var(--clr-primary-a0);
 
   display: flex;
   flex-direction: column;
   gap: .4rem;
+}
+
+.taskSelectorContainer {
+  overflow: auto;
 }
 
 .dayTask {
@@ -25,7 +36,7 @@
 .description {
   font-size: 14px;
   color: var(--text-color-t80);
-  max-height: 150px;
+  /*max-height: 160px;*/
   overflow: auto;
 }
 

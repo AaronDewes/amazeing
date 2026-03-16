@@ -1,13 +1,11 @@
 {
   title: {
     en: 'Walking',
-    de: 'Walking',
+    de: 'Rumlaufen',
   },
   description: {
-    en: 'Get the owl to the target! The allowed commands are move, turn left and turn right. \
-      (If you bump into a wall you cannot go on and you have to restart the Task)',
-    de: 'Get the owl to the target! The allowed commands are move, turn left and turn right. \
-      (If you bump into a wall you cannot go on and you have to restart the Task)',
+    en: 'Get the owl to the target using "move" and "turn" instructions!',
+    de: 'Bring die Eule mit "move" und "turn" Befehle zum Ziel!',
   },
   levelData: {
     maze: {

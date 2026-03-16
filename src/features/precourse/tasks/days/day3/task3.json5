@@ -1,15 +1,15 @@
 {
   title: {
     en: 'Dead End Filling',
-    de: 'Dead End Filling',
+    de: 'Dead-End-Füllung',
   },
   description: {
-    en: 'Implement the algorithm described on the exercise sheet',
-    de: 'Implement the algorithm described on the exercise sheet',
+    en: 'Implement the "Dead End Filling" algorithm to solve this maze! <refertosheet/>',
+    de: 'Implementiere den "Dead-End-Filling"-Algorithmus, um dieses Labyrinth zu lösen! <refertosheet/>',
   },
   levelData: {
     maze: {
-      theme: 'plains',
+      theme: 'lava',
       width: 7,
       height: 7,
       walls: {

@@ -1,11 +1,20 @@
 {
   title: {
     en: 'Guess what',
-    de: 'Guess what',
+    de: 'Rate mal',
   },
   description: {
-    en: 'The task now is to find your way out of the maze with the given subprogram "guess"! Whenever you can no longer walk straight, jump to the label "guess". After execution, "guess" writes 0 or 1 in the variable result and jumps back to the label "done". If you get the number 0 you have to turn left. If the result is 1, you have to turn right to get to the destination. The functionality of "guess" is not relevant here.',
-    de: 'The task now is to find your way out of the maze with the given subprogram "guess"! Whenever you can no longer walk straight, jump to the label "guess". After execution, "guess" writes 0 or 1 in the variable result and jumps back to the label "done". If you get the number 0 you have to turn left. If the result is 1, you have to turn right to get to the destination. The functionality of "guess" is not relevant here.',
+    en: 'This maze can be solved as follows: <br/> \
+     Walk straight until you hit a wall, then jump to the label "guess". \
+     After execution, "guess" writes 0 or 1 in the variable "result" and jumps back to the label "done". \
+     If "result" is 0, turn left. If "result" is 1, turn right. Repeat until goal is reached. \
+     <remark hidden="true">The functionality of "guess" is not relevant here.</remark>',
+    de: 'Dieses Labyrinth kann wie folgt gelöst werden: <br/> \
+     Gehe geradeaus, bis du auf eine Wand triffst, und springe dann zum Label "guess". \
+     Nach der Ausführung schreibt "guess" 0 oder 1 in die Variable "result" und springt zurück zum Label "done". \
+     Wenn "result" 0 ist, drehe dich nach links. Wenn "result" 1 ist, drehe dich nach rechts. \
+     Wiederhole dies, bis das Ziel erreicht ist. \
+     <remark hidden="true">Die Funktionalität von "guess" ist hier nicht relevant.</remark>',
   },
   levelData: {
     maze: {
@@ -29,24 +38,4 @@
       direction: 'north',
     },
   },
-  startingCode: "var t \
-      var result \
-      # Insert your Code around the 'return' marker \
-      return: \
-      # Given guess subroutine, guesses a turn for you to take \
-      # 0 -> left, 1 -> right \
-      guess: \
-          var zero \
-          load zero 0 \
-          var direction d \
-          getdir d \
-          var b \
-          eq b d east \
-          branch b e \
-          load result 0 \
-          jump return \
-      e: \
-          load result 1 \
-          jump return \
-      ",
 }

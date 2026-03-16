@@ -1,5 +1,7 @@
-import { CodeEditorWithPanel } from "../CodeEditorWithPanel/CodeEditorWithPanel.tsx";
-import type { Extension } from "@codemirror/state";
+import {
+  CodeEditorWithPanel,
+  type CodeEditorWithPanelProps,
+} from "../CodeEditorWithPanel/CodeEditorWithPanel.tsx";
 import { GrTask } from "react-icons/gr";
 import { TaskView } from "./TaskView/TaskView.tsx";
 import { useTasks } from "../../../precourse/context/TasksContext.tsx";
@@ -7,14 +9,13 @@ import { useTranslatable } from "../../../../shared/i18n/i18n.ts";
 import { useCodeModel } from "../../context/code/CodeModelContext.tsx";
 import { CodeReset } from "./CodeReset/CodeReset.tsx";
 
-type TaskCodeEditorProps = {
-  editorExtensions?: Extension[];
+type TaskCodeEditorProps = Partial<CodeEditorWithPanelProps> & {
   transitionDuration: number;
 };
 
 export function TaskCodeEditor({
-  editorExtensions,
-  transitionDuration,
+  onPanelChange,
+  ...props
 }: TaskCodeEditorProps) {
   const { t } = useTranslatable();
   const { code, setCode } = useCodeModel();
@@ -24,8 +25,6 @@ export function TaskCodeEditor({
       title={t(task.title)}
       code={code}
       setCode={setCode}
-      transitionDuration={transitionDuration}
-      editorExtensions={editorExtensions}
       initialOpen
       topBar={{
         left: [<CodeReset />],
@@ -34,9 +33,11 @@ export function TaskCodeEditor({
         name: t("codeEditor.tasks"),
         content: <TaskView />,
         icon: () => <GrTask />,
-        minPixels: [200, 300],
-        initialSizes: [0.7, 0.3],
+        minPixels: [300, 300],
+        initialSizes: [0.6, 0.4],
       }}
+      onPanelChange={onPanelChange}
+      {...props}
     />
   );
 }

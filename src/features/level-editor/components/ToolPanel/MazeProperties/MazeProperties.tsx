@@ -7,6 +7,7 @@ import { useLevelEditor } from "../../../context/LevelEditorContext.tsx";
 import { clamp } from "../../../../editor/utils.ts";
 
 const MAX_MAZE_SIZE = 25;
+const MIN_MAZE_SIZE = 1;
 
 export function MazeProperties() {
   const { t } = useTranslation();
@@ -18,11 +19,11 @@ export function MazeProperties() {
           <input
             type="number"
             value={level.maze.width}
-            min={2}
+            min={MIN_MAZE_SIZE}
             max={MAX_MAZE_SIZE}
             onChange={(e) => {
               let width = Number(e.target.value);
-              width = clamp(width, 2, MAX_MAZE_SIZE);
+              width = clamp(width, MIN_MAZE_SIZE, MAX_MAZE_SIZE);
               setLevel(resizeLevel(level, width, level.maze.height));
             }}
           />
@@ -31,11 +32,11 @@ export function MazeProperties() {
           <input
             type="number"
             value={level.maze.height}
-            min={2}
+            min={MIN_MAZE_SIZE}
             max={MAX_MAZE_SIZE}
             onChange={(e) => {
               let height = Number(e.target.value);
-              height = clamp(height, 2, MAX_MAZE_SIZE);
+              height = clamp(height, MIN_MAZE_SIZE, MAX_MAZE_SIZE);
               setLevel(resizeLevel(level, level.maze.width, height));
             }}
           />

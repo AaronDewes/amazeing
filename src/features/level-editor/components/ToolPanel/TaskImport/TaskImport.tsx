@@ -6,7 +6,7 @@ import { FormGroup } from "../../../../../shared/components/Form/FormGroup/FormG
 import { useState } from "react";
 import { IoIosWarning } from "react-icons/io";
 import { useLevelEditor } from "../../../context/LevelEditorContext.tsx";
-import type { TaskData } from "../../../../precourse/task.ts";
+import { loadTaskFromString } from "../../../../precourse/task.ts";
 import type { LevelData } from "../../../../../core/game/level.ts";
 import { useFloatingContext } from "../../../../../shared/floating/context/FloatingContext.tsx";
 
@@ -58,7 +58,7 @@ function ImportButton({ json }: { json: string }) {
 
   const readJson = () => {
     try {
-      const parsed = JSON.parse(json) as TaskData;
+      const parsed = loadTaskFromString(json, undefined);
       const level: LevelData = {
         taskMeta: {
           title: parsed.title,

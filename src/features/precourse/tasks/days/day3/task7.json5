@@ -1,15 +1,23 @@
 {
   title: {
-    en: 'Bonus: Queue',
-    de: 'Bonus: Queue',
+    en: 'Queue (Bonus)',
+    de: 'Queue (Bonus)',
   },
   description: {
-    en: 'In this task we will implement a queue using stacks. A queue works according to the FIFO-principle (First in, first out). Your implementation should permit the following operations: QueueInit, QueuePush, QueuePop, and QueueEmpty, where the arguments and return values correspond to those of the stack.',
-    de: 'In this task we will implement a queue using stacks. A queue works according to the FIFO-principle (First in, first out). Your implementation should permit the following operations: QueueInit, QueuePush, QueuePop, and QueueEmpty, where the arguments and return values correspond to those of the stack.',
+    en: 'In this task we will implement a queue using stacks. \
+     A queue works according to the FIFO-principle (First in, first out). \
+     Your implementation should permit the following operations: \
+     "queue_init", "queue_push", "queue_pop", and "queue_empty", \
+     where the arguments and return values correspond to those of the stack.',
+    de: 'In dieser Aufgabe implementieren wir eine Queue mit Stacks. \
+     Eine Queue funktioniert nach dem FIFO-Prinzip (First in, first out). \
+     Deine Implementierung sollte die folgenden Operationen erlauben: \
+     "queue_init", "queue_push", "queue_pop" und "queue_empty", \
+     wobei die Argumente und Rückgabewerte denen des Stacks entsprechen.',
   },
   levelData: {
     maze: {
-      theme: 'plains',
+      theme: 'lava',
       width: 4,
       height: 4,
       walls: {

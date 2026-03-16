@@ -5,7 +5,10 @@ import { CopyToClipboard } from "../../CopyToClipboard/CopyToClipboard.tsx";
 import { useTranslation } from "react-i18next";
 import { FormGroup } from "../../../../../shared/components/Form/FormGroup/FormGroup.tsx";
 import { FormField } from "../../../../../shared/components/Form/FormField/FormField.tsx";
-import { stringifyToTask } from "../../../../precourse/task.ts";
+import {
+  stringifyToLevelData,
+  stringifyToTask,
+} from "../../../../precourse/task.ts";
 import { useState } from "react";
 import {
   type Language,
@@ -13,12 +16,11 @@ import {
 } from "../../../../../shared/i18n/i18n.ts";
 import { PillSwitch } from "../../../../../shared/components/PillSwitch/PillSwitch.tsx";
 import { useLevelEditor } from "../../../context/LevelEditorContext.tsx";
-import { MiniCodeEditor } from "../../../../editor/components/CodeEditor/MiniCodeEditor/MiniCodeEditor.tsx";
+import { ButtonGroup } from "../../../../../shared/components/Button/ButtonGroup/ButtonGroup.tsx";
 
 export function TaskExport() {
   const { t } = useTranslation();
   const { level, setLevel } = useLevelEditor();
-  const editorStateJson = stringifyToTask(level);
   const [language, setLanguage] = useState<Language>("en");
   return (
     <Modal
@@ -81,51 +83,61 @@ export function TaskExport() {
               }}
               style={{
                 width: "200px",
-                height: "100px",
+                height: "400px",
               }}
             />
           </FormField>
         </FormGroup>
         <h5>{t("levelEditor.taskExport.other")}</h5>
-        <FormGroup>
-          <FormField label={t("levelEditor.taskExport.startingCode")}>
-            <MiniCodeEditor
-              code={level.taskMeta?.startingCode ?? ""}
-              setCode={(code) => {
-                setLevel({
-                  ...level,
-                  taskMeta: {
-                    ...level.taskMeta,
-                    startingCode: code,
-                  },
-                });
-              }}
-              editorProps={{ autocomplete: false }}
-            />
-          </FormField>
-          <Modal
+        <ButtonGroup vertical stretch>
+          <ExportedJson
             title={t("levelEditor.taskExport.exportedJson")}
-            trigger={
-              <Button variant="secondary">
-                <BiExport />
-                {t("levelEditor.taskExport.exportJson")}
-              </Button>
-            }
-          >
-            <textarea
-              readOnly
-              value={editorStateJson}
-              style={{
-                height: "300px",
-                fontFamily: "JetBrains Mono, monospace",
-                whiteSpace: "pre",
-                fontSize: "14px",
-              }}
-            />
-            <CopyToClipboard content={editorStateJson} />
-          </Modal>
-        </FormGroup>
+            action={t("levelEditor.taskExport.exportJson")}
+            json={stringifyToTask(level)}
+          />
+          <ExportedJson
+            title={t("levelEditor.levelExport.exportedJson")}
+            action={t("levelEditor.levelExport.exportJson")}
+            json={stringifyToLevelData(level)}
+          />
+        </ButtonGroup>
       </div>
     </Modal>
+  );
+}
+
+function ExportedJson({
+  title,
+  action,
+  json,
+}: {
+  title: string;
+  action: string;
+  json: string;
+}) {
+  return (
+    <FormGroup>
+      <Modal
+        title={title}
+        trigger={
+          <Button variant="secondary">
+            <BiExport />
+            {action}
+          </Button>
+        }
+      >
+        <textarea
+          readOnly
+          value={json}
+          style={{
+            height: "300px",
+            fontFamily: "JetBrains Mono, monospace",
+            whiteSpace: "pre",
+            fontSize: "14px",
+          }}
+        />
+        <CopyToClipboard content={json} />
+      </Modal>
+    </FormGroup>
   );
 }
