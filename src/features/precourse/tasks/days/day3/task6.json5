@@ -4,10 +4,8 @@
     de: 'Depth-First-Search',
   },
   description: {
-    en: 'In this exercise, we want to implement the depth-first search algorithm. \
-      Take a look at sheet 3 for further information.',
-    de: 'In this exercise, we want to implement the depth-first search algorithm. \
-      Take a look at sheet 3 for further information.',
+    en: 'Implement the "Depth-First Search" algorithm to solve this maze! <refertosheet/>',
+    de: 'Implementiere den "Depth-First-Search"-Algorithmus, um dieses Labyrinth zu lösen! <refertosheet/>',
   },
   levelData: {
     maze: {
