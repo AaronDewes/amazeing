@@ -1,11 +1,15 @@
 {
   title: {
     en: 'In Circles',
-    de: 'In Circles',
+    de: 'Im Kreis',
   },
   description: {
-    en: 'The strategy from the previous task leads to the owl running in circles in this maze. Change the solution from the previous task so that the current field is marked before each right turn. As soon as a marked field is reached for the second time, the right turn is to be replaced by a left turn.',
-    de: 'The strategy from the previous task leads to the owl running in circles in this maze. Change the solution from the previous task so that the current field is marked before each right turn. As soon as a marked field is reached for the second time, the right turn is to be replaced by a left turn.',
+    en: 'The strategy from "Task 1.4 (Subroutines)" leads to the owl running in circles in this maze, change its solution so that:<br/> \
+     The current tile is marked before each right turn. \
+     As soon as a marked tile is reached for the second time, a left turn is made instead of a right.',
+    de: 'Die Strategie aus "Task 1.4 (Subroutines)" führt dazu, dass die Eule in diesem Labyrinth im Kreis läuft. Ändere die Lösung so, dass:<br/> \
+     Das aktuelle Tile vor jeder Rechtsdrehung markiert wird. \
+     Sobald ein markiertes Tile zum zweiten Mal erreicht wird, wird statt rechts, links gedreht.',
   },
   levelData: {
     maze: {
