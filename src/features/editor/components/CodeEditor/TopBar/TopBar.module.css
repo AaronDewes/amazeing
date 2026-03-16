@@ -4,8 +4,29 @@
   gap: .5rem;
 }
 
+.left {
+  display: flex;
+  gap: .5rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.right {
+  display: flex;
+  gap: .5rem;
+  margin-left: auto;
+}
+
 .title {
   box-shadow: inset 0 -2px 0 var(--clr-primary-a0);
+  min-width: 0;
+}
+
+.title > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .separator {
