@@ -5,12 +5,14 @@
     de: 'Bonus: Brute Force',
   },
   description: {
-    en: 'Problems can be solved theoretically by trying all possibilities. This procedure is called brute force. \
-      The aim of this task is to solve the maze with a special strategy, which is successful in many mazes: Before each \
-      step, check the markings on the current square. If all directions are marked, stop. Otherwise, turn the owl in a direction that is not yet marked, mark it and take one step forward.',
-    de: 'Problems can be solved theoretically by trying all possibilities. This procedure is called brute force. \
-      The aim of this task is to solve the maze with a special strategy, which is successful in many mazes: Before each \
-      step, check the markings on the current square. If all directions are marked, stop. Otherwise, turn the owl in a direction that is not yet marked, mark it and take one step forward.',
+    en: 'Solve the maze using a brute force strategy:<br/>\
+      At each step, check the markings on the current square. \
+      If all directions are marked, stop. \
+      Otherwise, turn the owl toward an unmarked direction, mark it, and move forward.',
+    de: 'Löse das Labyrinth mit einer Brute-Force-Strategie:<br/>\
+      Überprüfe bei jedem Schritt die Markierungen auf dem aktuellen Feld. \
+      Wenn alle Richtungen markiert sind, stoppe. \
+      Andernfalls drehe die Eule in eine unmarkierte Richtung, markiere sie und gehe vorwärts.',
   },
   levelData: {
     maze: {
