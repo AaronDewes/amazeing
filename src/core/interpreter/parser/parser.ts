@@ -269,6 +269,10 @@ export class Parser {
       }
       this.error(`Invalid value: "${token.value}"`);
     }
+    if (token.type === "char") {
+      // Character literal
+      return this.popTypeOrThrow("char").value;
+    }
     // Number
     return this.popTypeOrThrow("number").value;
   }

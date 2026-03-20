@@ -1,11 +1,12 @@
 import type { Token } from "./token.ts";
-import { ErrorWithTip, LocatableError } from "../error.ts";
+import { LocatableError } from "../error.ts";
 
 /**
  * Lexer class
  */
 export class Lexer {
   private pos = 0;
+  private line = 1;
   private readonly input: string;
 
   /**
@@ -23,19 +24,12 @@ export class Lexer {
   tokenize(): Token[] {
     const tokens: Token[] = [];
     while (this.pos < this.input.length) {
-      try {
-        const nextToken = this.nextToken();
-        if (nextToken === null) break;
-        tokens.push(nextToken);
-      } catch (err) {
-        const { line } = this.location();
-        // Add line number to error
-        if (!(err instanceof Error)) throw err;
-        if (err instanceof ErrorWithTip) {
-          throw new LocatableError(line, err.message, err.tip);
-        }
-        throw new LocatableError(line, err.message);
+      const nextToken = this.nextToken();
+      if (nextToken === null) break;
+      if (nextToken.type === "newline") {
+        this.line++;
       }
+      tokens.push(nextToken);
     }
     return tokens;
   }
@@ -55,7 +49,7 @@ export class Lexer {
       }
 
       // Whitespace
-      if (/\s/.test(c)) {
+      if (isWhitespace(c)) {
         this.pop();
         continue;
       }
@@ -97,14 +91,21 @@ export class Lexer {
           return { type: "rbracket" };
       }
 
-      throw new Error(`Unexpected character: ${c}`);
+      this.error(`Unexpected character: ${c}`);
     }
   }
 
   private readIdentifier(): Token {
     let value = "";
-    while (this.peek() != null && isAlphaNumeric(this.peek()!)) {
+    while (this.peek() != null && !isWhitespace(this.peek()!)) {
       value += this.pop();
+    }
+    const valid = value.split("").every(isAlphaNumeric);
+    if (!valid) {
+      this.error(
+        `Invalid identifier: "${value}"`,
+        `Identifiers must start with a letter or underscore and only contain letters, numbers, and underscores`,
+      );
     }
     return { type: "identifier", value };
   }
@@ -120,16 +121,47 @@ export class Lexer {
   private readChar(): Token {
     this.pop(); // '
     const c = this.peek();
+    if (c === "\\") {
+      return this.readEscapeSequence();
+    }
     if (c === null || this.peek(1) !== "'") {
-      throw new ErrorWithTip(
-        // TODO: Check error message
-        `Invalid character literal: ${c ?? "none"}`,
-        `Character literals must be a single character enclosed in single quotes, e.g. 'a'`,
+      this.error(
+        `Invalid character literal`,
+        `Character literals must be a single character or escape sequence enclosed in single quotes, e.g. 'a'`,
       );
     }
     this.pop(); // Character
     this.pop(); // Closing '
     return { type: "char", value: c.charCodeAt(0) };
+  }
+
+  private readEscapeSequence(): Token {
+    this.pop(); // \
+    const c = this.pop();
+    // Supported escape characters
+    const escapes: Record<string, string> = {
+      n: "\n",
+      t: "\t",
+      "'": "'",
+      "\\": "\\",
+    };
+    if (c === null || !(c in escapes)) {
+      this.error(
+        `Invalid escaped sequence: \\${c}`,
+        `Supported escape sequences are ` +
+          Object.keys(escapes)
+            .map((e) => `\\${e}`)
+            .join(", "),
+      );
+    }
+    if (this.peek() !== "'") {
+      this.error(
+        `Invalid character literal`,
+        `Character literals must be a single character or escape sequence enclosed in single quotes, e.g. '\\n'`,
+      );
+    }
+    this.pop(); // Closing '
+    return { type: "char", value: escapes[c].charCodeAt(0) };
   }
 
   /**
@@ -154,12 +186,13 @@ export class Lexer {
   }
 
   /**
-   * Returns the current line and column number for error reporting.
+   * Throws an error
    */
-  private location(): { line: number; column: number } {
-    const lines = this.input.slice(0, this.pos).split("\n");
-    const last = lines[lines.length - 1];
-    return { line: lines.length, column: last.length + 1 };
+  private error(message: string, tip?: string): never {
+    if (tip !== undefined) {
+      throw new LocatableError(this.line, message, tip);
+    }
+    throw new LocatableError(this.line, message);
   }
 }
 
@@ -173,4 +206,8 @@ function isAlphaNumeric(c: string) {
 
 function isDigit(c: string) {
   return /[0-9]/.test(c);
+}
+
+function isWhitespace(c: string) {
+  return /\s/.test(c);
 }
