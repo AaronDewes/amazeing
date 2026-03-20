@@ -91,21 +91,15 @@ export class Lexer {
           return { type: "rbracket" };
       }
 
-      this.error(`Unexpected character: ${c}`);
+      this.error(`Unexpected character: ${c}`,
+        `Valid tokens are identifiers, numbers, '[', ']', ':' or character literals`);
     }
   }
 
   private readIdentifier(): Token {
     let value = "";
-    while (this.peek() != null && !isWhitespace(this.peek()!)) {
+    while (this.peek() != null && isAlphaNumeric(this.peek()!)) {
       value += this.pop();
-    }
-    const valid = value.split("").every(isAlphaNumeric);
-    if (!valid) {
-      this.error(
-        `Invalid identifier: "${value}"`,
-        `Identifiers must start with a letter or underscore and only contain letters, numbers, and underscores`,
-      );
     }
     return { type: "identifier", value };
   }
@@ -147,10 +141,10 @@ export class Lexer {
     };
     if (c === null || !(c in escapes)) {
       this.error(
-        `Invalid escaped sequence: \\${c}`,
+        `Invalid escaped sequence: \\${c ?? ""}`,
         `Supported escape sequences are ` +
           Object.keys(escapes)
-            .map((e) => `\\${e}`)
+            .map((e) => `'\\${e}'`)
             .join(", "),
       );
     }
@@ -169,10 +163,11 @@ export class Lexer {
    * @param offset
    */
   private peek(offset = 0): string | null {
-    if (this.pos >= this.input.length) {
+    const index = this.pos + offset;
+    if (index >= this.input.length) {
       return null;
     }
-    return this.input[this.pos + offset];
+    return this.input[index];
   }
 
   /**
