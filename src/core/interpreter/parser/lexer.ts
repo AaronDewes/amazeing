@@ -91,8 +91,10 @@ export class Lexer {
           return { type: "rbracket" };
       }
 
-      this.error(`Unexpected character: ${c}`,
-        `Valid tokens are identifiers, numbers, '[', ']', ':' or character literals`);
+      this.error(
+        `Unexpected character: ${c}`,
+        `Valid tokens are identifiers, numbers, '[', ']', ':' or character literals`,
+      );
     }
   }
 
@@ -115,13 +117,16 @@ export class Lexer {
   private readChar(): Token {
     this.pop(); // '
     const c = this.peek();
+    if (c === null) {
+      this.error(`Unterminated character literal`, `Missing closing '`);
+    }
     if (c === "\\") {
       return this.readEscapeSequence();
     }
-    if (c === null || this.peek(1) !== "'") {
+    if (this.peek(1) !== "'") {
       this.error(
         `Invalid character literal`,
-        `Character literals must be a single character or escape sequence enclosed in single quotes, e.g. 'a'`,
+        `Character literals must contain exactly one character, e.g. 'a' or '\n'`,
       );
     }
     this.pop(); // Character
@@ -151,7 +156,7 @@ export class Lexer {
     if (this.peek() !== "'") {
       this.error(
         `Invalid character literal`,
-        `Character literals must be a single character or escape sequence enclosed in single quotes, e.g. '\\n'`,
+        `Character literals must contain exactly one character, e.g. 'a' or '\n'`,
       );
     }
     this.pop(); // Closing '
