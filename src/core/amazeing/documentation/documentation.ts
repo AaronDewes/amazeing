@@ -58,7 +58,7 @@ const INSTRUCTION_DOCUMENTATION_LOOKUP: {
     },
   ],
   load: {
-    usage: "load <dest: address> <immediate: value>",
+    usage: "load <dest: address> <immediate: value | string_literal | char_literal>",
     description: 'Loads the given immediate value into "dest".',
   },
   copy: {
@@ -70,8 +70,8 @@ const INSTRUCTION_DOCUMENTATION_LOOKUP: {
     description: `Outputs the value stored in the address "src" to the console.`,
   },
   printascii: {
-    usage: "printascii <src: address>?",
-    description: `Outputs the value stored in the address "src" as an ASCII character to the console. If no "src" is given, moves to a new line instead.`,
+    usage: "printascii <src: address | char_literal>",
+    description: `Outputs the value or character literal at "src" as an ASCII character to the console.`,
   },
   debug: {
     usage: "debug <src: address>",

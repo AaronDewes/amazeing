@@ -10,6 +10,7 @@ import {
   type Address,
   booleanToInteger,
   isArrayAccess,
+  isStringLiteral,
   isValue,
   typeOfVariableValue,
   type Value,
@@ -55,6 +56,13 @@ export const EXECUTORS: Executors = {
   },
 
   load: (env, { dest, value }) => {
+    if (isStringLiteral(value)) {
+      // String literal, set as array of numbers
+      const array = value.literal.split("").map((char) => char.charCodeAt(0));
+      array[array.length] = 0;
+      env.setOrThrow(dest, array);
+      return;
+    }
     env.setOrThrow(dest, value);
   },
 
@@ -157,11 +165,7 @@ export const EXECUTORS: Executors = {
   },
 
   printascii: (env, { src }) => {
-    if (src === undefined) {
-      env.console.append({ type: "log", text: "\n" });
-      return;
-    }
-    const value = env.getIntegerOrThrow(src);
+    const value = typeof src === "number" ? src : env.getIntegerOrThrow(src);
     env.console.append({ type: "log", text: String.fromCharCode(value) });
   },
 

@@ -21,7 +21,7 @@ export type Argument = {
 export type Arguments = Argument[];
 
 type ArgumentLookup = {
-  [K in Instruction["type"]]?: Arguments;
+  [K in Instruction["type"]]: Arguments;
 };
 
 const THREE_VAR_ARGS: Arguments = [
@@ -34,6 +34,8 @@ const TWO_VAR_ARGS: Arguments = [
   { types: ["address"] },
   { types: ["address"] },
 ];
+
+const SINGLE_VAR_ARGS: Arguments = [{ types: ["address"] }];
 
 /**
  * Gets the argument types for a given instruction.
@@ -82,6 +84,12 @@ const INSTRUCTION_ARGUMENT_LOOKUP: ArgumentLookup = {
   branch: [{ types: ["address"] }, { types: ["label"] }],
   branchz: [{ types: ["address"] }, { types: ["label"] }],
 
-  print: [{ types: ["address"] }],
-  debug: [{ types: ["address"] }],
+  print: SINGLE_VAR_ARGS,
+  printascii: SINGLE_VAR_ARGS,
+  debug: SINGLE_VAR_ARGS,
+
+  getdir: SINGLE_VAR_ARGS,
+  getmark: SINGLE_VAR_ARGS,
+  mark: [{ types: ["direction"] }],
+  unmark: [{ types: ["direction"] }],
 };
