@@ -151,5 +151,8 @@
 
   "taskDescription.hint": "Tipp anzeigen",
   "taskDescription.remark": "Anmerkung anzeigen",
-  "taskDescription.referToSheet": "Schau dir das Übungsblatt für detaillierte Anweisungen an!"
+  "taskDescription.referToSheet": "Schau dir das Übungsblatt für detaillierte Anweisungen an!",
+
+  "tasks.selfChecked.explanation": "Diese Aufgabe hängt nicht vom Maze ab. Du musst selbst überprüfen, ob deine Lösung korrekt ist.",
+  "tasks.selfChecked.markCompleted": "Meine Lösung ist korrekt"
 }
