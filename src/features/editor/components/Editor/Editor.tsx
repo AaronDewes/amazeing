@@ -19,6 +19,11 @@ import { useCalculateLayout } from "../../../../shared/utils/useCalculateLayout.
 import clsx from "clsx";
 import { useState } from "react";
 import { fileEditorMinWidths, taskEditorMinWidths } from "../../widths.ts";
+import {
+  breakpointDisplay,
+  breakpointTheme,
+  lineNumbersClickable,
+} from "../../../../core/amazeing/breakpoints.ts";
 
 export const MIN_RUN_SPEED = 1;
 export const MAX_RUN_SPEED = 100;
@@ -65,6 +70,22 @@ export function Editor({ levelStorage, owlControls = false }: EditorProps) {
     ? minWidths.codePanel + minWidths.sidePanel + SEPARATOR_WIDTH
     : minWidths.codePanel;
   const viewportWidth = owlControls ? 620 : 570;
+
+  const [breakpoints, setBreakpoints] = useState<number[]>([]);
+
+  // Editor extensions
+  const extensions = [
+    currentLineHighlighter(() => currentLine),
+    lineNumbersClickable((line) => {
+      setBreakpoints((prev) => {
+        prev[line] = !prev[line] ? 1 : 0;
+        return [...prev];
+      });
+    }),
+    breakpointDisplay(breakpoints),
+    breakpointTheme,
+  ];
+
   return (
     <div className={clsx(styles.editorContainer, isMobile && styles.mobile)}>
       <PanelContainer
@@ -95,7 +116,7 @@ export function Editor({ levelStorage, owlControls = false }: EditorProps) {
         </PanelContainer>
         {isMultiSource(source) ? (
           <FileCodeEditor
-            editorExtensions={[currentLineHighlighter(() => currentLine)]}
+            editorExtensions={extensions}
             transitionDuration={transitionDuration}
             onPanelChange={(open) => {
               setCodePanelOpen(open);
@@ -104,7 +125,7 @@ export function Editor({ levelStorage, owlControls = false }: EditorProps) {
           />
         ) : (
           <TaskCodeEditor
-            editorExtensions={[currentLineHighlighter(() => currentLine)]}
+            editorExtensions={extensions}
             transitionDuration={transitionDuration}
             onPanelChange={(open) => {
               setCodePanelOpen(open);
