@@ -4,9 +4,12 @@
     de: 'String der Hoffnung',
   },
   description: {
-    en: 'Use "Treeana"\'s clues to solve this tree-like labyrinth! <refertosheet/>',
-    de: 'Benutze "Treeana"s Hinweise, um dieses baumartige Labyrinth zu lösen! <refertosheet/>',
+    en: 'Implement the functions "string_length", "string_concat" and "string_equals"!<br/>\
+     Test your solution after implementing them. <refertosheet/>',
+    de: 'Implementiere die Funktionen "string_length", "string_concat" und "string_equals"!<br/>\
+     Teste deine Lösung nach der Implementierung. <refertosheet/>',
   },
+  // Random map from previous task
   levelData: {
     maze: {
       theme: 'drylands',
