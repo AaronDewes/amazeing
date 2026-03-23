@@ -20,6 +20,7 @@ export type CodeEditorProps = {
   topBar?: TopBarProps;
   transitionDuration?: number;
   settingsButton?: boolean;
+  formatButton?: boolean;
   showTopBar?: boolean;
   autocomplete?: boolean;
 };
@@ -35,6 +36,7 @@ export function CodeEditor({
   settingsButton = true,
   showTopBar = true,
   autocomplete = true,
+  formatButton = true,
 }: CodeEditorProps) {
   const { theme } = useEditorTheme();
   const { settings } = useCodeEditorSettings();
@@ -53,7 +55,7 @@ export function CodeEditor({
     >
       {showTopBar && (
         <CornerGroup position="top-right" className={styles.cornerGroup}>
-          <TopBar title={title} settingsButton={settingsButton} {...topBar} />
+          <TopBar title={title} settingsButton={settingsButton} formatButton={formatButton} {...topBar} />
         </CornerGroup>
       )}
 
