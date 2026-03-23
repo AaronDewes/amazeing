@@ -18,7 +18,7 @@ queue_push:
   # Implement
   ret
 
-# QueuePop
+# queue_pop
 # Pops an element from the queue.
 # Argument 0: The queue
 # Return: The first element of the queue
