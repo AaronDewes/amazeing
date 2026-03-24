@@ -12,6 +12,11 @@ function splitCodeAndLabels(line: string): string[] {
     let i = 0;
     while (i < line.length) {
         const c = line[i];
+        if (c === "#") {
+            // If we encounter a comment, just add the rest of the line as code and break
+            currentLine += line.substring(i);
+            break;
+        }
         if (c === ":") {
             currentLine += c;
             result.push(currentLine.trim());
