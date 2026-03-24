@@ -1,5 +1,5 @@
 import type { Level } from "../../../../core/game/level.ts";
-import { type PropsWithChildren, useMemo } from "react";
+import { type PropsWithChildren, useCallback, useEffect, useMemo } from "react";
 import { type EditorSettings } from "../settings/EditorSettingsContext.tsx";
 import type {
   Constraint,
@@ -53,11 +53,21 @@ export function InterpreterProvider({
   settings,
   constraints,
   children,
+  onFinish,
 }: InterpreterProviderProps) {
-  const { interpreterRef, setSnapshot, step, canStep, reset, snapshot, init } =
-    useEngine(code, level, () => {
-      /* TODO: ADD */
-    });
+  const evaluatedConstraints = useConstraintsHandler(code, constraints ?? []);
+  const onFinishWithConstraints = useCallback(() => {
+    onFinish?.(evaluatedConstraints ?? []);
+  }, [evaluatedConstraints, onFinish]);
+  const {
+    interpreterRef,
+    setSnapshot,
+    step,
+    canStep,
+    reset: resetInterpreter,
+    snapshot,
+    init,
+  } = useEngine(code, level, onFinishWithConstraints);
   const { run, stop, isRunning, breakpoints } = useRunner(
     interpreterRef,
     setSnapshot,
@@ -66,7 +76,15 @@ export function InterpreterProvider({
     settings.instructionsPerSecond,
   );
 
-  const evaluatedConstraints = useConstraintsHandler(code, constraints ?? []);
+  const reset = useCallback(() => {
+    stop();
+    resetInterpreter();
+  }, [resetInterpreter, stop]);
+
+  // Reset when code changes
+  useEffect(() => {
+    reset();
+  }, [code, reset]);
 
   const executionValue = useMemo<ExecutionContextType>(
     () => ({
@@ -87,7 +105,7 @@ export function InterpreterProvider({
       owl: snapshot.owl,
       marks: snapshot.marks,
     }),
-    [level, snapshot.marks, snapshot.owl],
+    [level, snapshot.owl, snapshot.marks],
   );
 
   const outputValue = useMemo<OutputContextType>(
@@ -110,7 +128,6 @@ export function InterpreterProvider({
     }),
     [breakpoints],
   );
-
   return (
     <ExecutionContext.Provider value={executionValue}>
       <GameContext.Provider value={gameValue}>
