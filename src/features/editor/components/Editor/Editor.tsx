@@ -48,8 +48,16 @@ export type EditorProps = {
 const SEPARATOR_WIDTH = 8;
 
 export function Editor({ levelStorage, owlControls = false }: EditorProps) {
-  const { output, isRunning, level, owlData, currentLine, markData } =
-    useInterpreter();
+  const {
+    output,
+    isRunning,
+    level,
+    owlData,
+    currentLine,
+    markData,
+    breakpoints,
+    setBreakpoints,
+  } = useInterpreter();
   const { source } = useCodeModel();
   const { settings } = useEditorSettings();
   const transitionDuration = getTransitionSpeed(
@@ -70,8 +78,6 @@ export function Editor({ levelStorage, owlControls = false }: EditorProps) {
     ? minWidths.codePanel + minWidths.sidePanel + SEPARATOR_WIDTH
     : minWidths.codePanel;
   const viewportWidth = owlControls ? 620 : 570;
-
-  const [breakpoints, setBreakpoints] = useState<number[]>([]);
 
   // Editor extensions
   const extensions = [
