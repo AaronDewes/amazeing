@@ -168,11 +168,13 @@ export class Interpreter {
    * Gets the current state of the interpreter
    */
   snapshot(): InterpreterSnapshot {
+    const owl = { ...this.env.owl.data };
+    const marks = { marks: this.env.marks.data.marks.map((r) => [...r]) };
     return {
-      owl: this.env.owl.data,
-      marks: this.env.marks.data,
+      owl,
+      marks,
       line: this.currentLine(),
-      output: this.console.output,
+      output: [...this.console.output],
       isFinished: this.isFinished,
     };
   }
@@ -198,7 +200,7 @@ export class Interpreter {
    * Gets the current line of the interpreter
    * @return null if not started, -1 if execution is finished, line number otherwise
    */
-   currentLine(): number | null {
+  currentLine(): number | null {
     if (this.pc === 0) {
       return null;
     }

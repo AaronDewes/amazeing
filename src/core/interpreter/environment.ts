@@ -1,6 +1,6 @@
 import type { LabelDefinition } from "./instruction.ts";
 import { type InterpreterConsole } from "./console.ts";
-import { Owl } from "../game/owl.ts";
+import { LevelOwl, Owl } from "../game/owl.ts";
 import {
   type Address,
   type Array,
@@ -56,7 +56,7 @@ export class Environment {
     this.console = interpreterConsole;
     this.stack = stack;
     this.args = args;
-    this.owl = new Owl(level.createOwlData());
+    this.owl = new LevelOwl(level.createOwlData(), level);
     this.level = level;
     this.marks = new Marks(emptyMarks(level.maze.width(), level.maze.height()));
   }
