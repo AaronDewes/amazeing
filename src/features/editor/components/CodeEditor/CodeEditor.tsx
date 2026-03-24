@@ -24,7 +24,6 @@ export type CodeEditorProps = {
   autocomplete?: boolean;
 };
 
-// TODO: Fix button overflow when panel is small
 export function CodeEditor({
   title,
   code,
