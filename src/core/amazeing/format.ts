@@ -26,9 +26,9 @@ function splitCodeAndLabels(line: string): string[] {
             i++;
         }
     }
-    if (currentLine.trim() !== "") {
-        result.push(currentLine.trim());
-    }
+
+    result.push(currentLine.trim());
+
     return result;
 }
 
