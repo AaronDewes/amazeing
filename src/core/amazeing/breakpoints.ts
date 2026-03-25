@@ -47,6 +47,7 @@ export const breakpointTheme = EditorView.baseTheme({
     opacity: 1,
     "text-shadow": `0 0 2px var(--clr-danger-a0), 0 0 5px var(--clr-danger-a0)`,
     fontWeight: "bold",
+    transition: "color 0.2s",
   },
   ".cm-gutterElement.cm-breakpoint:hover": {
     color: "var(--clr-danger-a20)",
@@ -58,10 +59,12 @@ export const breakpointTheme = EditorView.baseTheme({
     cursor: "pointer",
     "user-select": "none",
     "-webkit-user-select": "none",
+    transition: "color 0.2s",
   },
   ".cm-gutterElement:hover": {
     color: "var(--clr-danger-a10)",
     opacity: 1,
     "text-shadow": `0 0 2px var(--clr-danger-a0), 0 0 5px var(--clr-danger-a0)`,
+    transition: "none",
   },
 });
