@@ -7,7 +7,6 @@
 
 .currentTaskContainer {
   padding: 1.5rem 1rem 1rem 1rem;
-  min-width: 250px;
   background-color: var(--clr-surface-a10);
   border-radius: 1rem;
   border-bottom: 1px solid var(--clr-surface-a20);

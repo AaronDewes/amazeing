@@ -49,7 +49,7 @@
   "editor.stop": "Stoppen",
   "editor.step": "Schritt",
   "editor.step.tooltip": "Wie viele Schritte pro Klick ausgeführt werden sollen",
-  "editor.reset": "Zurücksetzen",
+  "editor.reset": "Zurück",
   "editor.settings": "Ausführungseinstellungen",
   "editor.settings.speed": "Ausführungsgeschwindigkeit",
   "editor.settings.speed.unlimited": "Unbegrenzt",

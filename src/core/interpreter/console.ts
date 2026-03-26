@@ -6,7 +6,6 @@ export type ConsoleMessage = {
   text: string;
 };
 
-// TODO: Refactor so that keeps on same line unless newline
 /**
  * Console for the interpreter.
  */
@@ -18,6 +17,9 @@ export class InterpreterConsole {
 
   /**
    * Logs the given message to the console.
+   *
+   * Should not print a newline unless explicitly printed.
+   *
    * @param message The message to log.
    */
   log(message: ConsoleMessage) {

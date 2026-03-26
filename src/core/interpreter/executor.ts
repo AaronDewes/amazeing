@@ -139,7 +139,7 @@ export const EXECUTORS: Executors = {
   },
 
   exit: (env) => {
-    env.console.log({ type: "system", text: "Program exited." });
+    env.console.log({ type: "system", text: "Program exited.\n" });
     return { type: "jump", target: -1 };
   },
 
@@ -161,22 +161,24 @@ export const EXECUTORS: Executors = {
 
   print: (env, { src }) => {
     const value = env.getOrThrow(src);
-    env.console.log({ type: "log", text: formatValue(value) });
+    // Print newline automatically
+    env.console.log({ type: "log", text: formatValue(value) + "\n" });
   },
 
   printascii: (env, { src }) => {
     const value = typeof src === "number" ? src : env.getIntegerOrThrow(src);
-    env.console.log({ type: "log", text: String.fromCharCode(value) }); // TODO: Update
+    // Don't print newline
+    env.console.log({ type: "log", text: String.fromCharCode(value) });
   },
 
   debug: (env, { src }) => {
     const value = env.getOrNull(src);
     if (value === null) {
-      env.console.log({ type: "system", text: `[DEBUG] ${src}: no value` });
+      env.console.log({ type: "system", text: `[DEBUG] ${src}: no value\n` });
     } else {
       env.console.log({
         type: "system",
-        text: `[DEBUG] ${src}: type = ${typeOfVariableValue(value)}, value = ${formatValue(value)}`,
+        text: `[DEBUG] ${src}: type = ${typeOfVariableValue(value)}, value = ${formatValue(value)}\n`,
       });
     }
   },

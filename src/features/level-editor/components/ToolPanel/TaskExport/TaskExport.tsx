@@ -99,6 +99,7 @@ export function TaskExport() {
             title={t("levelEditor.levelExport.exportedJson")}
             action={t("levelEditor.levelExport.exportJson")}
             json={stringifyToLevelData(level)}
+            debug
           />
         </ButtonGroup>
       </div>
@@ -110,17 +111,19 @@ function ExportedJson({
   title,
   action,
   json,
+  debug,
 }: {
   title: string;
   action: string;
   json: string;
+  debug?: boolean;
 }) {
   return (
     <FormGroup>
       <Modal
         title={title}
         trigger={
-          <Button variant="secondary">
+          <Button variant={debug ? "secondary" : "primary"}>
             <BiExport />
             {action}
           </Button>

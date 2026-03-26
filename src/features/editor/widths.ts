@@ -2,7 +2,7 @@ import type { PanelMinWidths } from "./components/CodeEditorWithPanel/CodeEditor
 
 export const taskEditorMinWidths: PanelMinWidths = {
   codePanel: 300,
-  sidePanel: 300,
+  sidePanel: 250,
   mobile: {
     codePanel: 600,
     sidePanel: 600,
