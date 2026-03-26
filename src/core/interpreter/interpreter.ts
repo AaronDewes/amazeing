@@ -157,7 +157,7 @@ export class Interpreter {
   checkFinish() {
     if (this.isFinished) return true;
     if (this.env.level.isFinished(this.env.owl.data)) {
-      this.env.console.log({ type: "success", text: "Level completed!" });
+      this.env.console.log({ type: "success", text: "Level completed!\n" });
       this.isLocked = true;
       this.isFinished = true;
       this.onFinish?.();
@@ -165,7 +165,7 @@ export class Interpreter {
     } else if (!this.canStep()) {
       this.env.console.log({
         type: "system",
-        text: "No more instructions left to execute.",
+        text: "No more instructions left to execute.\n",
       });
       this.isLocked = true;
       this.isFinished = false;
@@ -197,9 +197,9 @@ export class Interpreter {
       fn();
     } catch (e) {
       if (e instanceof Error) {
-        this.console.log({ type: "error", text: e.message });
+        this.console.log({ type: "error", text: e.message + "\n" });
         if (e instanceof ErrorWithTip && e.tip !== null) {
-          this.console.log({ type: "info", text: "Tip: " + e.tip });
+          this.console.log({ type: "info", text: "Tip: " + e.tip + "\n" });
         }
       }
     }
