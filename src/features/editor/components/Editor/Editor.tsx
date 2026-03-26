@@ -59,13 +59,14 @@ export function Editor({ levelStorage }: EditorProps) {
   const codeEditorWidth = codePanelOpen
     ? minWidths.codePanel + minWidths.sidePanel + SEPARATOR_WIDTH
     : minWidths.codePanel;
-  const viewportWidth = 570;
+  const viewportWidth = 520;
 
   return (
     <div className={clsx(styles.editorContainer, isMobile && styles.mobile)}>
       <PanelContainer
         orientation={!isMobile ? "horizontal" : "vertical"}
         minPixels={[viewportWidth, codeEditorWidth]}
+        initialSizes={[0.4, 0.6]}
       >
         <PanelContainer
           orientation="vertical"
