@@ -1,0 +1,32 @@
+{
+  title: {
+    en: 'Hansel & Gretel',
+    de: 'Hänsel & Gretel',
+  },
+  description: {
+    en: 'Decode the path that "Fridolin" gave you! <refertosheet/>',
+    de: 'Entschlüssle den Pfad, den dir "Fridolin" gegeben hat! <refertosheet/>',
+  },
+  levelData: {
+    maze: {
+      theme: 'plains',
+      width: 7,
+      height: 7,
+      walls: {
+        horizontal: '0010011-0000010-1001100-0100000-0110101-0011110',
+        vertical: '000100-111100-110001-011011-001111-100100-010000',
+      },
+    },
+    finishPosition: {
+      x: 4,
+      y: 4,
+    },
+    owlStart: {
+      position: {
+        x: 0,
+        y: 0,
+      },
+      direction: 'east',
+    },
+  }
+}
