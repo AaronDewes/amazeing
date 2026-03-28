@@ -4,8 +4,12 @@
     de: 'Hänsel & Gretel',
   },
   description: {
-    en: 'Decode the path that "Fridolin" gave you! <refertosheet/>',
-    de: 'Entschlüssle den Pfad, den dir "Fridolin" gegeben hat! <refertosheet/>',
+    en: 'Decode the path that "Fridolin" gave you! \
+    <hint>The instructions "and", "xor", and "srl" can be useful for this task.</hint> \
+    <refertosheet/>',
+    de: 'Entschlüssle den Pfad, den dir "Fridolin" gegeben hat! \
+    <hint>Die Befehle "and", "xor", und "srl" können dir dabei helfen.</hint> \
+    <refertosheet/>',
   },
   levelData: {
     maze: {
