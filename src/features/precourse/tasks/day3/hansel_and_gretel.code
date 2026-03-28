@@ -1,0 +1,9 @@
+# The encoded path Fridolin gave you
+# 32-bit long
+var path
+load path 3836526514
+
+# The key Fridolin gave you
+# 8-bit long
+var key
+load key 182
