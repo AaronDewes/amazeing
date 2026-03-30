@@ -13,7 +13,7 @@ import { FaArrowRight } from "react-icons/fa6";
 export function HomePage() {
   const { t } = useTranslation();
   return (
-    <Layout style={{ overflow: "auto", height: "100%" }}>
+    <Layout>
       <div className={styles.logoContainer}>
         <img src={logo} alt="Amazeing Logo" className={styles.logo} />
       </div>

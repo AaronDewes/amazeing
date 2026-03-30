@@ -1,17 +1,16 @@
 import styles from "./Layout.module.css";
 import clsx from "clsx";
 import { ErrorBoundary } from "react-error-boundary";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type LayoutProps = {
   children: ReactNode;
   fullWidth?: boolean;
-  style?: CSSProperties;
 };
 
-export function Layout({ children, fullWidth, style }: LayoutProps) {
+export function Layout({ children, fullWidth }: LayoutProps) {
   return (
-    <div className={styles.layout} style={style}>
+    <div className={styles.layout}>
       <main className={clsx(fullWidth && styles.fullWidth)}>
         <ErrorBoundary
           fallback={
