@@ -48,7 +48,7 @@ export function ExecutionControls() {
         </Button>
       ) : (
         <Button
-          variant={"success"}
+          variant={canStep ? "success" : "secondary"}
           onClick={() => {
             if (!canStep) {
               reset();
