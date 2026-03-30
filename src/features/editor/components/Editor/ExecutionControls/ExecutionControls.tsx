@@ -50,7 +50,9 @@ export function ExecutionControls() {
         <Button
           variant={"success"}
           onClick={() => {
-            reset();
+            if (!canStep) {
+              reset();
+            }
             run();
           }}
         >
