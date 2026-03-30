@@ -45,7 +45,7 @@
   "viewport.notRequired": "Das Maze ist nicht erforderlich, um diese Aufgabe zu lösen",
 
   "editor.run": "Ausführen",
-  "editor.restart": "Neu starten",
+  "editor.restart": "Neustart",
   "editor.continue": "Fortsetzen",
   "editor.stop": "Stoppen",
   "editor.step": "Schritt",
