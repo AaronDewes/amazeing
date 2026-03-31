@@ -31,6 +31,8 @@ export const amazeing = StreamLanguage.define({
       if (constantPattern.test(word)) return "number";
       return "content";
     }
+    // Operators
+    if (stream.match(/[=+\-*/:[\]]/)) return "operator";
     // Character literal
     if (stream.match(/^'.*'/)) return "string";
     // Strings
