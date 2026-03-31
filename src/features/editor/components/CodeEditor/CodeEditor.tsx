@@ -11,6 +11,10 @@ import { useEditorTheme } from "../../../../shared/theme/EditorThemeContext.tsx"
 import type { Extension } from "@codemirror/state";
 import { TopBar, type TopBarProps } from "./TopBar/TopBar.tsx";
 import type { CSSProperties } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import type { VariableMap } from "../../../../core/interpreter/environment.ts";
+import { setCurrentLineEffect } from "../../../../core/amazeing/currentLineHighlighter.ts";
+import { setVariablesEffect } from "../../../../core/amazeing/variableHover.ts";
 
 export type CodeEditorProps = {
   title?: string;
@@ -22,6 +26,8 @@ export type CodeEditorProps = {
   settingsButton?: boolean;
   showTopBar?: boolean;
   autocomplete?: boolean;
+  currentLine?: number | null;
+  variables?: VariableMap;
 };
 
 export function CodeEditor({
@@ -34,9 +40,67 @@ export function CodeEditor({
   settingsButton = true,
   showTopBar = true,
   autocomplete = true,
+  currentLine,
+  variables,
 }: CodeEditorProps) {
   const { theme } = useEditorTheme();
   const { settings } = useCodeEditorSettings();
+  const viewRef = useRef<EditorView | null>(null);
+
+  const tooltipExtension = useMemo(
+    () =>
+      tooltips({
+        position: "fixed",
+        parent: document.getElementById("tooltip-root")!,
+      }),
+    [],
+  );
+
+  const topPaddingExtension = useMemo(
+    () =>
+      EditorView.theme({
+        ".cm-scroller": {
+          paddingTop: showTopBar ? "3rem" : null,
+        },
+      }),
+    [showTopBar],
+  );
+
+  const tabCompletionExtension = useMemo(
+    () => Prec.highest(keymap.of([{ key: "Tab", run: acceptCompletion }])),
+    [],
+  );
+
+  const extensions = useMemo(
+    () => [
+      amazeing,
+      autocomplete ? amazeingAutocomplete : [],
+      tooltipExtension,
+      ...(editorExtensions ?? []),
+      topPaddingExtension,
+      EditorView.lineWrapping,
+      tabCompletionExtension,
+    ],
+    [
+      autocomplete,
+      editorExtensions,
+      tabCompletionExtension,
+      tooltipExtension,
+      topPaddingExtension,
+    ],
+  );
+
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view) return;
+    view.dispatch({ effects: setCurrentLineEffect.of(currentLine ?? null) });
+  }, [currentLine]);
+
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view || variables === undefined) return;
+    view.dispatch({ effects: setVariablesEffect.of(variables) });
+  }, [variables]);
 
   return (
     <div
@@ -61,23 +125,14 @@ export function CodeEditor({
         className={styles.codeEditor}
         height="100%"
         theme={theme.extension}
-        extensions={[
-          amazeing,
-          autocomplete ? amazeingAutocomplete : [],
-          tooltips({
-            position: "fixed",
-            parent: document.getElementById("tooltip-root")!,
-          }),
-          ...(editorExtensions ?? []),
-          // Make space for tabs
-          EditorView.theme({
-            ".cm-scroller": {
-              paddingTop: showTopBar ? "3rem" : null,
-            },
-          }),
-          EditorView.lineWrapping,
-          Prec.highest(keymap.of([{ key: "Tab", run: acceptCompletion }])),
-        ]}
+        extensions={extensions}
+        onCreateEditor={(view) => {
+          viewRef.current = view;
+          view.dispatch({ effects: setCurrentLineEffect.of(currentLine ?? null) });
+          if (variables !== undefined) {
+            view.dispatch({ effects: setVariablesEffect.of(variables) });
+          }
+        }}
         onChange={(value) => setCode(value)}
         basicSetup={{
           lineNumbers: false,
