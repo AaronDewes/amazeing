@@ -71,6 +71,7 @@ export function InterpreterProvider({
     reset: resetInterpreter,
     snapshot,
     init,
+    hasCode,
   } = useEngine(code, level, onFinishWithConstraints, maxSteps);
   const { run, stop, isRunning, breakpoints } = useRunner(
     interpreterRef,
@@ -110,6 +111,7 @@ export function InterpreterProvider({
       isRunning,
       currentLine: snapshot.line,
       variables: snapshot.variables,
+      hasCode,
     }),
     [
       canStep,
@@ -120,6 +122,7 @@ export function InterpreterProvider({
       snapshot.variables,
       step,
       stop,
+      hasCode,
     ],
   );
 

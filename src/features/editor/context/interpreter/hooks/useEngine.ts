@@ -21,6 +21,7 @@ type InterpreterEngine = {
   reset: () => void;
   step: (steps?: number) => void;
   canStep: () => boolean;
+  hasCode: () => boolean;
   // Initializes the interpreter manually,
   init: () => Interpreter | null;
 };
@@ -87,6 +88,16 @@ export function useEngine(
     return codeLines > 0;
   }, [code]);
 
+  const hasCode = useCallback(() => {
+    const interpreter = interpreterRef.current;
+    if (interpreter) return interpreter.hasInstructions();
+    // Check if there is code to execute
+    const codeLines = code
+      .split("\n")
+      .filter((l) => l !== "" && !l.startsWith("#")).length;
+    return codeLines > 0;
+  }, [code]);
+
   return {
     interpreterRef,
     snapshot,
@@ -95,5 +106,6 @@ export function useEngine(
     step,
     canStep,
     init,
+    hasCode,
   };
 }
