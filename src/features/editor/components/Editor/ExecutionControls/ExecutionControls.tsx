@@ -26,6 +26,7 @@ export function ExecutionControls() {
     isRunning,
     currentLine,
     canStep: canEditorStep,
+    hasCode,
   } = useExecution();
   const { isBreakpoint } = useBreakpoints();
   const canStep = canEditorStep();
@@ -48,7 +49,7 @@ export function ExecutionControls() {
         </Button>
       ) : (
         <Button
-          variant={canStep ? "success" : "secondary"}
+          variant={canStep || !hasCode ? "success" : "secondary"}
           onClick={() => {
             if (!canStep) {
               reset();
@@ -56,8 +57,12 @@ export function ExecutionControls() {
             run();
           }}
         >
-          {canStep ? <VscDebugContinue /> : <VscDebugRestart />}{" "}
-          {isMobile ? "" : canStep ? t("editor.run") : t("editor.restart")}
+          {canStep || !hasCode ? <VscDebugContinue /> : <VscDebugRestart />}{" "}
+          {isMobile
+            ? ""
+            : canStep || !hasCode
+              ? t("editor.run")
+              : t("editor.restart")}
         </Button>
       )}
       <ExecutionSettings />

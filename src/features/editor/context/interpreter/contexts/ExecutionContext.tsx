@@ -11,6 +11,7 @@ export type ExecutionContextType = {
   isRunning: boolean;
   currentLine: number | null;
   variables: VariableMap;
+  hasCode: () => boolean;
 };
 
 export const ExecutionContext = createContext<ExecutionContextType | null>(

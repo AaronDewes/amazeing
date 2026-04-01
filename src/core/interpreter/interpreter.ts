@@ -152,6 +152,13 @@ export class Interpreter {
   }
 
   /**
+   * Returns true if there are any instructions in the current program.
+   */
+  hasInstructions(): boolean {
+    return this.instructions.length > 0;
+  }
+
+  /**
    * Checks if the level is finished and prints a success message if it is.
    */
   // TODO: Don't log on finish maybe?

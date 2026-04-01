@@ -14,7 +14,7 @@ import type { FileStorage } from "../../context/storage/fileStorage.ts";
 import type { LevelData } from "../../../../core/game/level.ts";
 import { useCalculateLayout } from "../../../../shared/utils/useCalculateLayout.tsx";
 import clsx from "clsx";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { fileEditorMinWidths, taskEditorMinWidths } from "../../widths.ts";
 import {
   breakpointDisplay,
@@ -27,7 +27,11 @@ import { useGame } from "../../context/interpreter/contexts/GameContext.tsx";
 import type { PanelMinWidths } from "../CodeEditorWithPanel/CodeEditorWithPanel.tsx";
 import { useExecution } from "../../context/interpreter/contexts/ExecutionContext.tsx";
 import { useBreakpoints } from "../../context/interpreter/contexts/BreakpointsContext.tsx";
-import { variableHighlight, variableHover } from "../../../../core/amazeing/variableHover.ts";
+import {
+  variableHighlight,
+  variableHover,
+  variablesField,
+} from "../../../../core/amazeing/variableHover.ts";
 
 export const MIN_RUN_SPEED = 1;
 export const MAX_RUN_SPEED = 100;
@@ -132,26 +136,36 @@ function CodeEditorWrapper({
     settings.instructionsPerSecond,
   );
 
-  // Editor extensions
-  const extensions = [
-    currentLineHighlighter(() => currentLine),
-    lineNumbersClickable((line) => {
+  const onLineClick = useCallback(
+    (line: number) => {
       setBreakpoints((prev) => {
         if (!prev.includes(line)) {
           return [...prev, line];
         }
         return prev.filter((l) => l !== line);
       });
-    }),
-    breakpointDisplay(breakpoints),
-    breakpointTheme,
-    variableHover(variables),
-    variableHighlight(variables),
-  ];
+    },
+    [setBreakpoints],
+  );
+
+  const extensions = useMemo(
+    () => [
+      currentLineHighlighter,
+      variablesField,
+      lineNumbersClickable(onLineClick),
+      breakpointDisplay(breakpoints),
+      breakpointTheme,
+      variableHover,
+      variableHighlight,
+    ],
+    [breakpoints, onLineClick],
+  );
 
   return isMultiSource ? (
     <FileCodeEditor
       editorExtensions={extensions}
+      currentLine={currentLine}
+      variables={variables}
       transitionDuration={transitionDuration}
       onPanelChange={(open) => {
         setCodePanelOpen(open);
@@ -161,6 +175,8 @@ function CodeEditorWrapper({
   ) : (
     <TaskCodeEditor
       editorExtensions={extensions}
+      currentLine={currentLine}
+      variables={variables}
       transitionDuration={transitionDuration}
       onPanelChange={(open) => {
         setCodePanelOpen(open);
